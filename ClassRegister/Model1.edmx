@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=C:\Users\Mięso\source\repos\ClassRegister\CRDB.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klasa">
+          <Key>
+            <PropertyRef Name="IdUcznia" />
+          </Key>
+          <Property Name="IdUcznia" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'main.Obecnosc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Obecnosc">
+          <Key>
+            <PropertyRef Name="IdUcznia" />
+            <PropertyRef Name="JestObecny" />
+          </Key>
+          <Property Name="IdUcznia" Type="integer" Nullable="false" />
+          <Property Name="JestObecny" Type="bit" Nullable="false" />
+          <Property Name="Dzien" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OcenyUcznia">
+          <Key>
+            <PropertyRef Name="IdOcenyUcznia" />
+          </Key>
+          <Property Name="IdOcenyUcznia" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUcznia" Type="integer" Nullable="false" />
+          <Property Name="IdPrzedmiotu" Type="integer" Nullable="false" />
+          <Property Name="Ocena" Type="integer" Nullable="false" />
+          <Property Name="Dzien" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Przedmioty">
+          <Key>
+            <PropertyRef Name="IdPrzedmiotu" />
+          </Key>
+          <Property Name="IdPrzedmiotu" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Przedmiot" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Obecnosc_0_0">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+          <End Role="Obecnosc" Type="Self.Obecnosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="IdUcznia" />
+            </Principal>
+            <Dependent Role="Obecnosc">
+              <PropertyRef Name="IdUcznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcenyUcznia_0_0">
+          <End Role="Przedmioty" Type="Self.Przedmioty" Multiplicity="1" />
+          <End Role="OcenyUcznia" Type="Self.OcenyUcznia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Przedmioty">
+              <PropertyRef Name="IdPrzedmiotu" />
+            </Principal>
+            <Dependent Role="OcenyUcznia">
+              <PropertyRef Name="IdPrzedmiotu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcenyUcznia_1_0">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+          <End Role="OcenyUcznia" Type="Self.OcenyUcznia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="IdUcznia" />
+            </Principal>
+            <Dependent Role="OcenyUcznia">
+              <PropertyRef Name="IdUcznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mainModelStoreContainer">
+          <EntitySet Name="Klasa" EntityType="Self.Klasa" store:Type="Tables" />
+          <EntitySet Name="OcenyUcznia" EntityType="Self.OcenyUcznia" store:Type="Tables" />
+          <EntitySet Name="Przedmioty" EntityType="Self.Przedmioty" store:Type="Tables" />
+          <EntitySet Name="Obecnosc" EntityType="Self.Obecnosc" store:Type="Tables">
+            <DefiningQuery>SELECT 
+[Obecnosc].[IdUcznia] AS [IdUcznia], 
+[Obecnosc].[JestObecny] AS [JestObecny], 
+[Obecnosc].[Dzien] AS [Dzien]
+FROM [Obecnosc] AS [Obecnosc]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Obecnosc_0_0" Association="Self.FK_Obecnosc_0_0">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="Obecnosc" EntitySet="Obecnosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcenyUcznia_0_0" Association="Self.FK_OcenyUcznia_0_0">
+            <End Role="Przedmioty" EntitySet="Przedmioty" />
+            <End Role="OcenyUcznia" EntitySet="OcenyUcznia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcenyUcznia_1_0" Association="Self.FK_OcenyUcznia_1_0">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="OcenyUcznia" EntitySet="OcenyUcznia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klasa">
+          <Key>
+            <PropertyRef Name="IdUcznia" />
+          </Key>
+          <Property Name="IdUcznia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwisko" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Obecnosc" Relationship="Self.FK_Obecnosc_0_0" FromRole="Klasa" ToRole="Obecnosc" />
+          <NavigationProperty Name="OcenyUcznia" Relationship="Self.FK_OcenyUcznia_1_0" FromRole="Klasa" ToRole="OcenyUcznia" />
+        </EntityType>
+        <EntityType Name="OcenyUcznia">
+          <Key>
+            <PropertyRef Name="IdOcenyUcznia" />
+          </Key>
+          <Property Name="IdOcenyUcznia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUcznia" Type="Int64" Nullable="false" />
+          <Property Name="IdPrzedmiotu" Type="Int64" Nullable="false" />
+          <Property Name="Ocena" Type="Int64" Nullable="false" />
+          <Property Name="Dzien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klasa" Relationship="Self.FK_OcenyUcznia_1_0" FromRole="OcenyUcznia" ToRole="Klasa" />
+          <NavigationProperty Name="Przedmioty" Relationship="Self.FK_OcenyUcznia_0_0" FromRole="OcenyUcznia" ToRole="Przedmioty" />
+        </EntityType>
+        <EntityType Name="Przedmioty">
+          <Key>
+            <PropertyRef Name="IdPrzedmiotu" />
+          </Key>
+          <Property Name="IdPrzedmiotu" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Przedmiot" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OcenyUcznia" Relationship="Self.FK_OcenyUcznia_0_0" FromRole="Przedmioty" ToRole="OcenyUcznia" />
+        </EntityType>
+        <EntityType Name="Obecnosc">
+          <Key>
+            <PropertyRef Name="IdUcznia" />
+            <PropertyRef Name="JestObecny" />
+          </Key>
+          <Property Name="IdUcznia" Type="Int64" Nullable="false" />
+          <Property Name="JestObecny" Type="Boolean" Nullable="false" />
+          <Property Name="Dzien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klasa" Relationship="Self.FK_Obecnosc_0_0" FromRole="Obecnosc" ToRole="Klasa" />
+        </EntityType>
+        <Association Name="FK_Obecnosc_0_0">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+          <End Role="Obecnosc" Type="Self.Obecnosc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="IdUcznia" />
+            </Principal>
+            <Dependent Role="Obecnosc">
+              <PropertyRef Name="IdUcznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcenyUcznia_1_0">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+          <End Role="OcenyUcznia" Type="Self.OcenyUcznia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="IdUcznia" />
+            </Principal>
+            <Dependent Role="OcenyUcznia">
+              <PropertyRef Name="IdUcznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcenyUcznia_0_0">
+          <End Role="Przedmioty" Type="Self.Przedmioty" Multiplicity="1" />
+          <End Role="OcenyUcznia" Type="Self.OcenyUcznia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Przedmioty">
+              <PropertyRef Name="IdPrzedmiotu" />
+            </Principal>
+            <Dependent Role="OcenyUcznia">
+              <PropertyRef Name="IdPrzedmiotu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klasa" EntityType="Self.Klasa" />
+          <EntitySet Name="OcenyUcznia" EntityType="Self.OcenyUcznia" />
+          <EntitySet Name="Przedmioty" EntityType="Self.Przedmioty" />
+          <EntitySet Name="Obecnosc" EntityType="Self.Obecnosc" />
+          <AssociationSet Name="FK_Obecnosc_0_0" Association="Self.FK_Obecnosc_0_0">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="Obecnosc" EntitySet="Obecnosc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcenyUcznia_1_0" Association="Self.FK_OcenyUcznia_1_0">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="OcenyUcznia" EntitySet="OcenyUcznia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcenyUcznia_0_0" Association="Self.FK_OcenyUcznia_0_0">
+            <End Role="Przedmioty" EntitySet="Przedmioty" />
+            <End Role="OcenyUcznia" EntitySet="OcenyUcznia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="mainEntities">
+          <EntitySetMapping Name="Klasa">
+            <EntityTypeMapping TypeName="mainModel.Klasa">
+              <MappingFragment StoreEntitySet="Klasa">
+                <ScalarProperty Name="IdUcznia" ColumnName="IdUcznia" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OcenyUcznia">
+            <EntityTypeMapping TypeName="mainModel.OcenyUcznia">
+              <MappingFragment StoreEntitySet="OcenyUcznia">
+                <ScalarProperty Name="IdOcenyUcznia" ColumnName="IdOcenyUcznia" />
+                <ScalarProperty Name="IdUcznia" ColumnName="IdUcznia" />
+                <ScalarProperty Name="IdPrzedmiotu" ColumnName="IdPrzedmiotu" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="Dzien" ColumnName="Dzien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przedmioty">
+            <EntityTypeMapping TypeName="mainModel.Przedmioty">
+              <MappingFragment StoreEntitySet="Przedmioty">
+                <ScalarProperty Name="IdPrzedmiotu" ColumnName="IdPrzedmiotu" />
+                <ScalarProperty Name="Przedmiot" ColumnName="Przedmiot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obecnosc">
+            <EntityTypeMapping TypeName="mainModel.Obecnosc">
+              <MappingFragment StoreEntitySet="Obecnosc">
+                <ScalarProperty Name="IdUcznia" ColumnName="IdUcznia" />
+                <ScalarProperty Name="JestObecny" ColumnName="JestObecny" />
+                <ScalarProperty Name="Dzien" ColumnName="Dzien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
