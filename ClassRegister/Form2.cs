@@ -28,6 +28,7 @@ namespace ClassRegister
                 SQLiteCommand com = new SQLiteCommand("select * from LogData", con);
                 con.Open();
                 SQLiteDataReader reader = com.ExecuteReader();
+                bool match = false;
 
                 while (reader.Read())
                 {
@@ -36,8 +37,10 @@ namespace ClassRegister
                         Form1 form1 = new Form1();
                         this.Hide();
                         form1.Show();
+                        match = true;
                     }
                 }
+                if (match == false) { MessageBox.Show("Wrong Username or Password"); }
                 reader.Close();
 
             }
