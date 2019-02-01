@@ -24,14 +24,17 @@ namespace ClassRegister
         {
             using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
-
+                //tworze obiekt com klasy SQLiteCommand ktor ma w tym przeciązeniu te same parametry co DataAdapter
                 SQLiteCommand com = new SQLiteCommand("select * from LogData", con);
                 con.Open();
+                //DataReader czyta wiersz po wierszu tabelę z com czyli całą LogData z bazy login.db
                 SQLiteDataReader reader = com.ExecuteReader();
                 bool match = false;
 
+                //dopoki reader czyta wiersze...
                 while (reader.Read())
                 {
+                    //...sprawdz czy podany przez usera login i password zgadzają sie z tymi z wiersza
                     if (reader.GetString(1) == textBox1.Text && reader.GetString(2) == textBox2.Text)
                     {
                         Form1 form1 = new Form1();
@@ -40,6 +43,8 @@ namespace ClassRegister
                         match = true;
                     }
                 }
+                //jesli sie nie zgadzaja, pokaz MessageBox z informacją ze nie ma w LogData takiego wiersza
+                //w ktorym i login i password odpowiadaja tym podanym przez usera
                 if (match == false) { MessageBox.Show("Wrong Username or Password"); }
                 reader.Close();
 
