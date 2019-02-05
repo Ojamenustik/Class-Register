@@ -9,7 +9,7 @@ namespace ClassRegister
 {
     class DBhelp
     {
-        static string ConString = @"Data Source = C:\Users\anngo\Desktop\WSEI STUDIA\Class-Register-master\CRDB2.db";
+        static string ConString = @"Data Source = C:\Users\anngo\source\repos\Ojamenustik\Class-Register\ClassRegister\bin\Debug\CRDB2.db";
 
        
         public static User Login(string user,string pass)
