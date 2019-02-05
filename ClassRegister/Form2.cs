@@ -13,16 +13,16 @@ namespace ClassRegister
 {
     public partial class Form2 : Form
     {
-        string ConString = @"data source=C:\Users\Mięso\source\repos\Ojamenustik\Class-Register\login.db";
+        string ConString = @"Data Source = C:\Users\well\Downloads\Class-Register-master\CRDB.db";
 
         public Form2()
         {
             InitializeComponent();
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SQLiteConnection con = new SQLiteConnection(ConString))
+            /*using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
                 //tworze obiekt com klasy SQLiteCommand ktor ma w tym przeciązeniu te same parametry co DataAdapter
                 SQLiteCommand com = new SQLiteCommand("select * from LogData", con);
@@ -46,9 +46,19 @@ namespace ClassRegister
                 //jesli sie nie zgadzaja, pokaz MessageBox z informacją ze nie ma w LogData takiego wiersza
                 //w ktorym i login i password odpowiadaja tym podanym przez usera
                 if (match == false) { MessageBox.Show("Wrong Username or Password"); }
-                reader.Close();
+                reader.Close();*/
+
+            User usr = DBhelp.Login(textBox1.Text, maskedTextBox1.Text);
+            if (usr != null)
+            {
+                this.Hide();
+                Form1 form1 = new Form1(usr);
+                
+                form1.Show();
+               
+            }
 
             }
         }
-    }
+    
 }
