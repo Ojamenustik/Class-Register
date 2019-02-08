@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClassRegister.ViewModels;
 
 namespace ClassRegister
 {
@@ -28,5 +29,33 @@ namespace ClassRegister
         {
             Application.Current.Shutdown();
         }
+
+        private void Dashboard_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UczenDashboardModel();
+        }
+
+        private void Profil_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UczenProfilModel();
+        }
+
+        private void Wykresy_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UczenWykresyModel();
+        }
+
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    ObjectQuery<Product> products = dataEntities.Products;
+
+        //    var query =
+        //        from product in products
+        //        where product.Color == "Red"
+        //        orderby product.ListPrice
+        //        select new { product.Name, product.Color, CategoryName = product.ProductCategory.Name, product.ListPrice };
+
+        //    dataGrid1.ItemsSource = query.ToList();
+        //}
     }
 }
