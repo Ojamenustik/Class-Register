@@ -23,5 +23,10 @@ namespace ClassRegister
         {
             InitializeComponent();
         }
+
+        private void BellBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
