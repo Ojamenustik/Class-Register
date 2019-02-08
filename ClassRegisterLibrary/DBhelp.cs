@@ -4,14 +4,20 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassRegisterLibrary;
 
 namespace ClassRegister
 {
-    class DBhelp
+    public class DBhelp
     {
-        static string ConString = @"Data Source = C:\Users\anngo\Desktop\WSEI STUDIA\Class-Register-master\CRDB2.db";
+        static string ConString = @"Data Source = E:\C#_projects\Aniak\ClassRegister\Class-Register\CRDB2.db";
 
-       
+       /// <summary>
+       /// Logowanie do bazy danych
+       /// </summary>
+       /// <param name="user"> nazwa uzytkownika </param>
+       /// <param name="pass"> haslo uzytkownika </param>
+       /// <returns></returns>
         public static User Login(string user,string pass)
         {
             User ret = null;
@@ -80,6 +86,7 @@ namespace ClassRegister
         public static Dictionary<int, string> Przedmioty()
         {
             Dictionary<int, string> ret = new Dictionary<int, string>();
+
             using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
                
@@ -90,56 +97,45 @@ namespace ClassRegister
                 
                 SQLiteDataReader reader = com.ExecuteReader();
 
-
-                
                 while (reader.Read())
                 {
-
                     ret.Add(reader.GetInt32(0), reader.GetString(1));
-
                 }
-                
 
                 reader.Close();
-
             }
             return ret;
         }
+
         public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal)
         {
-           
-           
-           
+
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
             foreach (int temp in tempVal) { 
                 using (SQLiteConnection con = new SQLiteConnection(ConString))
-            {
-                
-                SQLiteCommand com = new SQLiteCommand(
-                    "SELECT p.Przedmiot, ou.Ocena, ou.Dzien from OcenyUcznia ou join Przedmioty p on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu="+temp.ToString(),
-                    con);
-                con.Open();
-                
-                SQLiteDataReader reader = com.ExecuteReader();
-                
-                while (reader.Read())
                 {
+                    SQLiteCommand com = new SQLiteCommand(
+                        $@"SELECT p.Przedmiot, ou.Ocena, ou.Dzien from OcenyUcznia ou join Przedmioty p 
+                          on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu={temp}",con);
 
-                    ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
+                    con.Open();
+                    
+                    SQLiteDataReader reader = com.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
 
+                        ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
+
+                    }
+                    reader.Close();
                 }
-                
-                reader.Close();
-
-            }
             }
             return ret;
         }
+
         public static List<Uzytkownik> Uczniowie()
         {
-
-
-
             List<Uzytkownik> ret = new List<Uzytkownik>();
             
                 using (SQLiteConnection con = new SQLiteConnection(ConString))
@@ -160,11 +156,11 @@ namespace ClassRegister
                     }
 
                     reader.Close();
-
-                
+               
             }
             return ret;
         }
+
         public static int Dodajocene(int idu,int idp,int oce,string date)
         {
             int reader = 0;
@@ -178,14 +174,10 @@ namespace ClassRegister
 
                  reader = com.ExecuteNonQuery();
 
-                
-
-                
-
-
             }
             return reader;
         }
+
         public static int DodajObecnosc(int idu,  int obecnosc, string date)
         {
             int reader = 0;
@@ -198,12 +190,6 @@ namespace ClassRegister
                 con.Open();
 
                 reader = com.ExecuteNonQuery();
-
-
-
-
-
-
             }
             return reader;
         }
