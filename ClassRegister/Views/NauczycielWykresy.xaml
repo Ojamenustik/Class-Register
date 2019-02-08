@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ClassRegister.Views.UczenWykresy"
+﻿<UserControl x:Class="ClassRegister.Views.NauczycielWykresy"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="TWOJE WYKRESY" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="WYKRESY" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1">
             <StackPanel HorizontalAlignment="Center">
@@ -79,9 +79,9 @@
                         <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-               
-               
+
+
             </StackPanel>
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>

@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClassRegister.ViewModels;
-using ClassRegister.Views;
 
 namespace ClassRegister
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for DashboardNauczyciel.xaml
     /// </summary>
-    public partial class DashboardUczen : Window
+    public partial class DashboardNauczyciel : Window
     {
-        public DashboardUczen()
+        public DashboardNauczyciel()
         {
             InitializeComponent();
         }
@@ -33,31 +32,23 @@ namespace ClassRegister
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new UczenDashboardModel();
-           
+            DataContext = new NauczycielDashboardModel();
+
         }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new UczenProfilModel();
+            DataContext = new NauczycielProfilModel();
         }
 
         private void Wykresy_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new UczenWykresyModel();
+            DataContext = new NauczycielWykresyModel();
         }
 
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    ObjectQuery<Product> products = dataEntities.Products;
-
-        //    var query =
-        //        from product in products
-        //        where product.Color == "Red"
-        //        orderby product.ListPrice
-        //        select new { product.Name, product.Color, CategoryName = product.ProductCategory.Name, product.ListPrice };
-
-        //    dataGrid1.ItemsSource = query.ToList();
-        //}
+        private void Dziennik_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NauczycielDziennikModel();
+        }
     }
 }

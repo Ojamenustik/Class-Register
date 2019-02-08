@@ -66,9 +66,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DashboardNauczyciel.xaml.cs">
+      <DependentUpon>DashboardNauczyciel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NauczycielDashboardModel.cs" />
+    <Compile Include="ViewModels\NauczycielDziennikModel.cs" />
+    <Compile Include="ViewModels\NauczycielProfilModel.cs" />
+    <Compile Include="ViewModels\NauczycielWykresyModel.cs" />
     <Compile Include="ViewModels\UczenDashboardModel.cs" />
     <Compile Include="ViewModels\UczenProfilModel.cs" />
     <Compile Include="ViewModels\UczenWykresyModel.cs" />
+    <Compile Include="Views\NauczycielDashboard.xaml.cs">
+      <DependentUpon>NauczycielDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NauczycielDziennik.xaml.cs">
+      <DependentUpon>NauczycielDziennik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NauczycielProfil.xaml.cs">
+      <DependentUpon>NauczycielProfil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NauczycielWykresy.xaml.cs">
+      <DependentUpon>NauczycielWykresy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UczenDashboard.xaml.cs">
       <DependentUpon>UczenDashboard.xaml</DependentUpon>
     </Compile>
@@ -78,6 +97,10 @@
     <Compile Include="Views\UczenWykresy.xaml.cs">
       <DependentUpon>UczenWykresy.xaml</DependentUpon>
     </Compile>
+    <Page Include="DashboardNauczyciel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DashboardUczen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +120,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\NauczycielDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NauczycielDziennik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NauczycielProfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NauczycielWykresy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UczenDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
