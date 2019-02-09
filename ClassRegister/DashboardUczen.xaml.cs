@@ -42,7 +42,6 @@ namespace ClassRegister
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new UczenDashboardModel();
-           
         }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
@@ -55,17 +54,9 @@ namespace ClassRegister
             DataContext = new UczenWykresyModel();
         }
 
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    ObjectQuery<Product> products = dataEntities.Products;
-
-        //    var query =
-        //        from product in products
-        //        where product.Color == "Red"
-        //        orderby product.ListPrice
-        //        select new { product.Name, product.Color, CategoryName = product.ProductCategory.Name, product.ListPrice };
-
-        //    dataGrid1.ItemsSource = query.ToList();
-        //}
+        private void DashboardLoad(object sender, RoutedEventArgs e)
+        {
+            DataContext = new UczenDashboardModel();
+        }
     }
 }

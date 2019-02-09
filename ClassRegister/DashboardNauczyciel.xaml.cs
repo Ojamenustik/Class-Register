@@ -41,7 +41,6 @@ namespace ClassRegister
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new NauczycielDashboardModel();
-
         }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
@@ -59,6 +58,11 @@ namespace ClassRegister
             DataContext = new NauczycielDziennikModel();
         }
 
-        
+        private void DashboardLoad(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NauczycielDziennikModel();
+        }
+
+
     }
 }
