@@ -12,6 +12,7 @@ namespace ClassRegister
 {
     public class DBhelp
     {
+
         static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
         
        /// <summary>
