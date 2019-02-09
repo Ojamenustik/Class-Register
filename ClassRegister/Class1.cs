@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassRegisterLibrary;
 
-namespace ClassRegister.ViewModels
+namespace ClassRegister
 {
-    public class UczenProfilModel
-
+    public static class Usr
     {
-        
-        
+        public static User usss { get; set; }
     }
 }

@@ -23,6 +23,13 @@ namespace ClassRegister.Views
         public UczenProfil()
         {
             InitializeComponent();
+            imiev.Text = Usr.usss.imie;
+            nazwiskov.Text = Usr.usss.nazwisko;
+            var xdd= DBhelp.OcenyUczniaSrednia(Usr.usss.id).ToString();
+            sredniav.Text = xdd;
+
+
+
         }
     }
 }
