@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassRegisterLibrary;
 using System.Data;
+using System.IO;
 
 namespace ClassRegister
 {
     public class DBhelp
     {
-        static string ConString = @"Data Source = E:\C#_projects\Aniak\ClassRegister\Class-Register\CRDB2.db";
-
+        static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
+        
        /// <summary>
        /// Logowanie do bazy danych
        /// </summary>
