@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="ClassRegister.Views.NauczycielProfil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClassRegister.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Background="#FF9A999F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="4">
+            <Rectangle Margin="50,0" RadiusX="20" RadiusY="20">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF391D6E" Offset="0.843"/>
+                        <GradientStop Color="#FFA6AFE0" Offset="0.048"/>
+                        <GradientStop Color="#FE244B7C" Offset="0.429"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <materialDesign:PackIcon Kind="FaceProfile" Width="300" Height="300" Margin="100,20"></materialDesign:PackIcon>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="50,20,140,90" Background="#FF2540B0">
+            <StackPanel>
+                <TextBlock Text="PROFIL" FontSize="20" HorizontalAlignment="Center" Margin="0,10"/>
+                <WrapPanel>
+                    <TextBlock Text="IMIE:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
+                    <TextBlock Text="ANNA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="NAZWISKO:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
+                    <TextBlock Text="GAJDA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
+                </WrapPanel>
+                <WrapPanel >
+                    <TextBlock Text="GRUPY:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
+                    <TextBlock Text="B00I06" FontSize="14" HorizontalAlignment="Center" Margin="1,10"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="XXXX:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
+                    <TextBlock Text="4.1" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</UserControl>

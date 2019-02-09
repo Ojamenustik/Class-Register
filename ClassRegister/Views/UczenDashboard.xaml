@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="ClassRegister.Views.UczenDashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClassRegister.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid Background="#FF9A999F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="6">
+            <TextBlock Text="Oceny" Margin="0,10,0,5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <WrapPanel Orientation="Horizontal" Margin="20,0">
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                        </Button.Effect>
+                        <Grid Width="90">
+                            <TextBlock HorizontalAlignment="Center" Text="Wszystkie" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                </Button>
+                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                        </Button.Effect>
+                        <Grid Width="90">
+                            <TextBlock HorizontalAlignment="Center" Text="Matematyka" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Chemia" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                        </Button.Effect>
+                        <Grid Width="90">
+                            <TextBlock HorizontalAlignment="Center" Text="Polski" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                </Button>
+                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                        </Button.Effect>
+                        <Grid Width="90">
+                            <TextBlock HorizontalAlignment="Center" Text="Angielski" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                        </Button.Effect>
+                        <Grid Width="90">
+                            <TextBlock HorizontalAlignment="Center" Text="WF" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+               </Button>
+            </WrapPanel>
+
+        </StackPanel>
+        <Grid Grid.Column="0" Grid.Row="1" Margin="10,10,10,0">
+            <DataGrid Name="ocenyucznia" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Ocena}" Header="Ocena"/>
+                    <DataGridTextColumn Binding="{Binding Data}" Header="Data"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="6">
+            <TextBlock Text="Obecności" Margin="0,10,0,5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <WrapPanel Orientation="Horizontal" Margin="20,0">
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Wszystkie" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Matematyka" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Chemia" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Polski" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="Angielski" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
+                    </Button.Effect>
+                    <Grid Width="90">
+                        <TextBlock HorizontalAlignment="Center" Text="WF" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </Button>
+            </WrapPanel>
+            </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10,10,10,0">
+            <DataGrid Name="obecnosciucznia" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Obescosc}" Header="Obecność"/>
+                    <DataGridTextColumn Binding="{Binding Data}" Header="Data"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>
