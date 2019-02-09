@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassRegisterLibrary;
+using System.Data;
 
 namespace ClassRegister
 {
@@ -107,10 +108,11 @@ namespace ClassRegister
             return ret;
         }
 
-        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal)
+        public static List<DataTable> OcenyPrzedmioty(List<int> tempVal)
         {
-
-            List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
+            
+            List<DataTable> ret = new List<DataTable>();
+            int i = 0;
             foreach (int temp in tempVal) { 
                 using (SQLiteConnection con = new SQLiteConnection(ConString))
                 {
@@ -119,16 +121,19 @@ namespace ClassRegister
                           on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu={temp}",con);
 
                     con.Open();
-                    
-                    SQLiteDataReader reader = com.ExecuteReader();
-                    
-                    while (reader.Read())
-                    {
+                    ret.Add(new DataTable());
+                    //SQLiteDataReader reader = com.ExecuteReader();
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(com);
 
-                        ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
-
-                    }
-                    reader.Close();
+//                    while (reader.Read())
+//                    {
+//
+//                        ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
+//
+//                    }
+//                    reader.Close();
+                    dataAdapter.Fill(ret[i]);
+                    ++i;
                 }
             }
             return ret;

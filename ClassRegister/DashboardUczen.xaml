@@ -46,13 +46,10 @@
 
         <Grid Grid.ColumnSpan="7" Background="#FF0D367D">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                <Button x:Name="BellBtn"  Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="BellBtn_Click">
-                    <materialDesign:PackIcon Kind="Bell"/>
-                </Button>
-                <Button x:Name="AccountBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                <Button x:Name="AccountBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="AccountBtn_Click">
                     <materialDesign:PackIcon Kind="Account"/>
                 </Button>
-                <Button x:Name="PowerBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                <Button x:Name="PowerBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="FaceBtn_Click">
                     <materialDesign:PackIcon Kind="Power"/>
                 </Button>
             </StackPanel>
