@@ -57,7 +57,7 @@ namespace ClassRegister
        
             public static double OcenyUczniaSrednia(int uId)
         {
-            double ret = 0;
+            double ret = 0.0;
             using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
 
@@ -69,7 +69,9 @@ namespace ClassRegister
                 SQLiteDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-
+                    if (reader.IsDBNull(0) == true)
+                        ret = 0.0;
+                    else
                     ret = reader.GetDouble(0);
 
                 }
@@ -155,6 +157,7 @@ namespace ClassRegister
             }
             return ret;
         }
+      
 
         public static List<Uzytkownik> Uczniowie()
         {
