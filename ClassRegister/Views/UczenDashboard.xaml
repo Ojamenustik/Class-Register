@@ -112,56 +112,14 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="6">
             <TextBlock Text="Obecności" Margin="0,10,0,5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <WrapPanel Orientation="Horizontal" Margin="20,0">
-                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="Wszystkie" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="Matematyka" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="Chemia" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="Polski" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button  Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="Angielski" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button Height="20" Width="100"  FontFamily="Copperplate Gothic Light" FontSize="10" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="90">
-                        <TextBlock HorizontalAlignment="Center" Text="WF" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </Button>
-            </WrapPanel>
+            <WrapPanel Orientation="Horizontal" Margin="20,0"/>
+            <DataGrid AutoGenerateColumns="False" x:Name="DataGridTest_Copy" CanUserAddRows="True" ItemsSource="{Binding OcenyPrzedmiotBinding}" Margin="0,50,0,0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Przedmiot" IsReadOnly="True" Binding="{Binding Przedmiot}" Width="50"/>
+                    <DataGridTextColumn Header="Dzień" IsReadOnly="True"  Binding="{Binding Dzień}" Width="130"/>
+                    <DataGridTextColumn Header="Ocena" IsReadOnly="True"  Binding="{Binding Ocena}" Width="130"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
 
     </Grid>

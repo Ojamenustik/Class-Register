@@ -24,7 +24,7 @@ namespace ClassRegister
    
     public partial class MainWindow : Window
     {
-        public User user;
+        public static User user { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace ClassRegister
                 if (user.typ == "uczen")
                 {
                     DashboardUczen dashboardUczen = new DashboardUczen();
-                    Usr.usss = user;
+                    
 
                     dashboardUczen.Show();
                 }else if (user.typ == "nauczyciel")
