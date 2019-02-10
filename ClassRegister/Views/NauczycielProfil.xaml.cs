@@ -23,6 +23,8 @@ namespace ClassRegister.Views
         public NauczycielProfil()
         {
             InitializeComponent();
+            imie.Text = DashboardNauczyciel.User.imie;
+            nazwisko.Text = DashboardNauczyciel.User.nazwisko;
         }
     }
 }

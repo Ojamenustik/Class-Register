@@ -39,7 +39,7 @@ namespace ClassRegister
                     dashboardUczen.Show();
                 }else if (user.typ == "nauczyciel")
                 {
-                    DashboardNauczyciel dashboardNauczyciel = new DashboardNauczyciel();
+                    DashboardNauczyciel dashboardNauczyciel = new DashboardNauczyciel(user);
                     dashboardNauczyciel.Show();
                 }
                 

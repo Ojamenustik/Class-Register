@@ -41,20 +41,12 @@
             <StackPanel>
                 <TextBlock Text="PROFIL" FontSize="20" HorizontalAlignment="Center" Margin="0,10"/>
                 <WrapPanel>
-                    <TextBlock Text="IMIE:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
-                    <TextBlock Text="ANNA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
+                    <TextBlock  Text="IMIE:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
+                    <TextBlock Name="imie" Text="ANNA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
                 </WrapPanel>
                 <WrapPanel>
                     <TextBlock Text="NAZWISKO:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
-                    <TextBlock Text="GAJDA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
-                </WrapPanel>
-                <WrapPanel >
-                    <TextBlock Text="GRUPY:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
-                    <TextBlock Text="B00I06" FontSize="14" HorizontalAlignment="Center" Margin="1,10"/>
-                </WrapPanel>
-                <WrapPanel>
-                    <TextBlock Text="XXXX:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
-                    <TextBlock Text="4.1" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
+                    <TextBlock Name="nazwisko" Text="GAJDA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
                 </WrapPanel>
             </StackPanel>
         </Grid>
