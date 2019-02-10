@@ -50,8 +50,8 @@ namespace ClassRegister.Views
                 przedmioty.Add(i);
            
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
-            List<ClassRegisterLibrary.OcenyPrzedmiot> xd = DBhelp.OcenyPrzedmioty(przedmioty,MainWindow.user.id);
-            foreach (ClassRegisterLibrary.OcenyPrzedmiot temp in xd)
+            List<ClassRegisterLibrary.OcenyPrzedmiot> ocenyPrzedmioty = DBhelp.OcenyPrzedmioty(przedmioty,MainWindow.user.id);
+            foreach (ClassRegisterLibrary.OcenyPrzedmiot temp in ocenyPrzedmioty)
             {
                 ret.Add(new OcenyPrzedmiot() { Dzień = temp.Dzień, Ocena = temp.Ocena, Przedmiot = temp.Przedmiot });
 
