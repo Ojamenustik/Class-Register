@@ -2,10 +2,10 @@
 Class Register to aplikacja stworzona na potrzeby projektu semestralnego z przedmiotu "Projektowanie obiektowe C#" przez trzy osoby. 
 Aplikacja ma na zadanie możliwość logowanie się do systemu jako uczeń lub nauczyciel (dwa różdne dashboardy i funkcjonalności dla tych dwóch typów użytkowników).<br>
 Po zalogowaniu uczeń może przejrzeć swoje oceny i obecności w zakładce Dashboard, obejrzeć swoje dane w zakładce Profil i obejrzeć wykresy, które pomogą mu zobrazować sobie swoje oceny na tle klasy oraz swój postęp.<br>
-Po zalogowaniu jako nauczyciel użytkownik ten może wprowadzać oceny i obecności na dany dzień swoim klasom w zakładce Dziennik, przejrzeć oceny i obecności uczniów dla innych dni w zakładce Klasy, obejrzeć swoje dane w zakładce Profil oraz obejrzeć wykresy.<br>
+Po zalogowaniu jako nauczyciel użytkownik ten może wprowadzać oceny i obecności swoim klasom w zakładce Dziennik, przejrzeć oceny i obecności uczniów w zakładce Klasy, obejrzeć swoje dane w zakładce Profil oraz obejrzeć wykresy.<br>
 
 Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawanie i wyświetlanie danych. 
-![Optional Text](Screeny/4.jpg)
+![Optional Text](Screeny/2.png)
 <br>
 ## Użyte Technologie
 * VisualStudio 2017<br>
@@ -18,12 +18,14 @@ Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawa
 [Live Charts](https://lvcharts.net/)<br>
 [SQLite](https://github.com/mackyle/sqlite)<br>
 [Material Design](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)<br>
+[MSTest V2](https://github.com/Microsoft/testfx)
 
 <h2 id="screeny">Class Register Screeny</h1>
 
-![Optional Text](Screeny/1.png)
-![Optional Text](Screeny/2.png)
-![Optional Text](Screeny/3.png)
+![Login](Screeny/1.png)
+![Dziennik](Screeny/3.PNG)
+![Profil](Screeny/4.PNG)
+![Klasy](Screeny/5.PNG)
 
 <h2>Twórcy</h2>
 
