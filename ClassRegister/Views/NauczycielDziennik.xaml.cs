@@ -24,6 +24,7 @@ namespace ClassRegister.Views
         public NauczycielDziennik()
         {
             InitializeComponent();
+            Data.Text = DateTime.Today.ToString("dd/MM/yyyy");
             przedmiot.ItemsSource = DBhelp.Przedmioty();
             uczen.ItemsSource = DBhelp.Uczniowie();
             uczen2.ItemsSource = DBhelp.Uczniowie();
