@@ -63,7 +63,7 @@ namespace ClassRegister.Views
                 
                 double srednia = DBhelp.OcenyUczniaSrednia(temp.id);
 
-
+                if (srednia == 0) continue;
                 if(temp.id!=MainWindow.user.id)
                 tt.Add(temp.Nazwisko, (int)srednia);
                 else

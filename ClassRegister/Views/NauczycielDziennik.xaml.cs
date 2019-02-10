@@ -47,7 +47,7 @@ namespace ClassRegister.Views
 
         private void dodajobecnosc_Click(object sender, RoutedEventArgs e)
         {
-            Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
+            Uzytkownik usr = (Uzytkownik)uczen2.SelectedItem;
             int czy = obecnosc.SelectedIndex;
             string datav = data2.SelectedDate.Value.ToShortDateString();
             DBhelp.DodajObecnosc(usr.id, czy, datav);
