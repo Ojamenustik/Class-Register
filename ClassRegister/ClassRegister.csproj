@@ -81,7 +81,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class1.cs" />
     <Compile Include="DashboardNauczyciel.xaml.cs">
       <DependentUpon>DashboardNauczyciel.xaml</DependentUpon>
     </Compile>

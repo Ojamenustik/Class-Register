@@ -79,8 +79,60 @@ namespace ClassRegister
                     if (reader.IsDBNull(0) == true)
                         ret = 0.0;
                     else
-                    ret = reader.GetDouble(0);
+                    ret = Math.Round(reader.GetDouble(0),2);
 
+                }
+            }
+            return ret;
+        }
+        public static List<srednklasy> SredniaKlasy( )
+        {
+            List<srednklasy> ret = new List<srednklasy>();
+            using (SQLiteConnection con = new SQLiteConnection(ConString))
+            {
+
+                SQLiteCommand com = new SQLiteCommand(
+                    @"Select  avg(Ocena) as value , k.nazwa from OcenyUcznia o
+join Uzytkownik u on o.IdUcznia=u.id
+Join Klasa k on u.klasaId=k.IdKlasa
+ group by u.klasaId",
+                    con);
+                con.Open();
+
+                SQLiteDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    double temp;
+                    if (reader.IsDBNull(0) == true)
+                        temp = 0.0;
+                    else
+                        temp = Math.Round(reader.GetDouble(0), 2);
+
+                    ret.Add(new srednklasy() { srednia = temp, klasa = reader.GetString(1) });
+                }
+            }
+            return ret;
+        }
+        public static List<pomoc> ObecnosciKlasy(int czy)
+        {
+            List<pomoc> ret = new List<pomoc>();
+            using (SQLiteConnection con = new SQLiteConnection(ConString))
+            {
+
+                SQLiteCommand com = new SQLiteCommand(
+                    @"Select  k.nazwa, count(o.JestObecny) as obecnosc from Obecnosc o
+join Uzytkownik u on o.IdUcznia=u.id
+Join Klasa k on u.klasaId=k.IdKlasa
+ Where o.JestObecny="+ czy.ToString()+ " group by u.klasaId ",
+                    con);
+                con.Open();
+
+                SQLiteDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                   
+
+                    ret.Add(new pomoc() { Text= reader.GetString(0),Value= reader.GetInt32(1) });
                 }
             }
             return ret;

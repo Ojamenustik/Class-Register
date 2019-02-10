@@ -51,6 +51,14 @@ namespace ClassRegisterLibrary
 
 
     }
+    public class srednklasy
+    {
+
+        public string klasa { get; set; }
+        public double srednia { get; set; }
+
+
+    }
     public class obecnos
     {
 

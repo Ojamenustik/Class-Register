@@ -24,6 +24,7 @@ namespace ClassRegister.Views
         public NauczycielDziennik()
         {
             InitializeComponent();
+            Datadzis.Text= DateTime.Now.ToString("M/d/yyyy");
             przedmiot.ItemsSource = DBhelp.Przedmioty();
             uczen.ItemsSource = DBhelp.Uczniowie();
             uczen2.ItemsSource = DBhelp.Uczniowie();
@@ -39,10 +40,10 @@ namespace ClassRegister.Views
         private void dodajocene_Click(object sender, RoutedEventArgs e)
         {
             Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
-            int przedmiotv = przedmiot.SelectedIndex;
+            KeyValuePair<int, string> przedmiotv = (KeyValuePair<int,string>)przedmiot.SelectedValue;
             int ocenav = ocena.SelectedIndex+1;
             string datav = data.SelectedDate.Value.ToShortDateString();
-            DBhelp.Dodajocene(usr.id, przedmiotv, ocenav, datav);
+            DBhelp.Dodajocene(usr.id, przedmiotv.Key, ocenav, datav);
         }
 
         private void dodajobecnosc_Click(object sender, RoutedEventArgs e)
