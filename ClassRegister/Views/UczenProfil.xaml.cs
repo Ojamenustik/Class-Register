@@ -26,8 +26,8 @@ namespace ClassRegister.Views
             InitializeComponent();
             imiev.Text = MainWindow.user.imie;
             nazwiskov.Text = MainWindow.user.nazwisko; 
-            var xdd= DBhelp.OcenyUczniaSrednia(MainWindow.user.id).ToString();
-            sredniav.Text = xdd;
+            var ocenyUczniaSrednia = DBhelp.OcenyUczniaSrednia(MainWindow.user.id).ToString();
+            sredniav.Text = ocenyUczniaSrednia;
 
 
 
