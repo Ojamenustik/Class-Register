@@ -22,7 +22,7 @@
         <Grid Grid.Column="1" Grid.Row="0">
             <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="DZIENNIK NA DZIEŃ: " FontSize="25" />
-                <TextBlock x:Name="Data" FontSize="20" Margin="2,3"></TextBlock>
+                <TextBlock Name="Datadzis" FontSize="20" Margin="2,3"></TextBlock>
             </WrapPanel>
         </Grid>
         <Grid Grid.Column="0"  Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,3">
@@ -30,15 +30,15 @@
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <StackPanel HorizontalAlignment="Center">
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="Button_Click">
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
                     <Grid Width="120">
-                        <TextBlock Text="5B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        <TextBlock Text="1A" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="Button_Click_1">
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
@@ -46,39 +46,14 @@
                         <TextBlock Text="1B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="2A" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="3C" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="4B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
+                
+                
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Background="Pink" Margin="-5,0,10,0">
             <DataGrid Name="dziennik">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Imie}" Header="Imie"/>
-                    <DataGridTextColumn Binding="{Binding Nazwisko}" Header="Nazwisko"/>
-                    <DataGridTextColumn Binding="{Binding Ocena}" Header="Ocena"/>
-                    <DataGridTextColumn Binding="{Binding Obecnosc}" Header="Obecność"/>
+                    
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

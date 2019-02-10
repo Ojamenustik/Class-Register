@@ -13,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClassRegister.ViewModels;
 using ClassRegisterLibrary;
+
 
 namespace ClassRegister.Views
 {
@@ -26,45 +26,70 @@ namespace ClassRegister.Views
         public UczenWykresy()
         {
             InitializeComponent();
-        }
 
+
+
+            mcChart.Visibility = Visibility.Hidden;
+            mcChartpie.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Hidden;
+        }
         void wykres1()
         {
 
             List<KeyValuePair<int, int>> valueList = new List<KeyValuePair<int, int>>();
 
 
-            Dictionary<int, int> db = DBhelp.OcenyUcznia(DashboardUczen.User.id);
+            Dictionary<int, int> db = DBhelp.OcenyUcznia(MainWindow.user.id);
             foreach (KeyValuePair<int, int> temp in db)
             {
                 valueList.Add(temp);
             }
             //Setting data for line chart
-
-
+           
+            
             mcChart.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Hidden;
             mcChartpie.Visibility = Visibility.Visible;
             ((PieSeries)mcChartpie.Series[0]).ItemsSource = valueList;
+        }
+        void wykres3()
+        {
+
             
+
+            List<obecnos> db = DBhelp.Obecnoscuczen(MainWindow.user.id);
+            int obecny = db.Where(t => t.Value == "Obecny").Count();
+            int nobecny = db.Where(t => t.Value == "nieobecny").Count();
+            List<pomoc> ret = new List<pomoc>();
+            ret.Add(new pomoc() { Value = obecny, Text = "obecny" });
+            ret.Add(new pomoc() { Value = nobecny, Text = "nieobecny" });
+            mcChart.Visibility = Visibility.Hidden;
+            mcChartpie.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Visible;
+            ((PieSeries)mcCharobec.Series[0]).ItemsSource = ret;
+
+
+
+
         }
         void wykres2()
         {
-            List<KeyValuePair<string, int>> valueList = new List<KeyValuePair<string, int>>();
+            List<KeyValuePair<string, double>> valueList = new List<KeyValuePair<string, double>>();
             List<Uzytkownik> users = DBhelp.Uczniowie();
 
 
-            Dictionary<string, int> tt = new Dictionary<string, int>();
+            Dictionary<string, double> tt = new Dictionary<string, double>();
 
             foreach (Uzytkownik temp in users)
             {
-
+                
                 double srednia = DBhelp.OcenyUczniaSrednia(temp.id);
 
                 if (srednia == 0) continue;
-                if (temp.id != DashboardUczen.User.id)
-                    tt.Add(temp.Nazwisko, (int)srednia);
+                if(temp.id!=MainWindow.user.id)
+                tt.Add(temp.Nazwisko, srednia);
                 else
-                    tt.Add("JA", (int)srednia);
+                    tt.Add("JA", srednia);
 
 
             }
@@ -75,7 +100,7 @@ namespace ClassRegister.Views
             // pieChart.Visibility = Visibility.Hidden;
 
 
-
+            mcCharobec.Visibility = Visibility.Hidden;
             mcChartpie.Visibility = Visibility.Hidden;
             mcChart.Visibility = Visibility.Visible;
             ((BarSeries)mcChart.Series[0]).ItemsSource = tt;
@@ -87,15 +112,17 @@ namespace ClassRegister.Views
 
         private void b2_Click(object sender, RoutedEventArgs e)
         {
-            mcChartpie.Visibility = Visibility.Visible;
             wykres2();
         }
 
         private void b1_Click(object sender, RoutedEventArgs e)
         {
-            mcChart.Visibility = Visibility.Visible;
-
             wykres1();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            wykres3();
         }
     }
 }

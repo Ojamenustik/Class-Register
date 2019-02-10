@@ -24,24 +24,28 @@ namespace ClassRegister
    
     public partial class MainWindow : Window
     {
+        public static User user { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+
 
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            User user = DBhelp.Login(UserNameTb.Text, PasswordTb.Password);
+            user = DBhelp.Login(UserNameTb.Text, PasswordTb.Password);
             if (user != null)
             {
                 if (user.typ == "uczen")
                 {
-                    DashboardUczen dashboardUczen = new DashboardUczen(user);
+                    DashboardUczen dashboardUczen = new DashboardUczen();
+                    
+
                     dashboardUczen.Show();
                 }else if (user.typ == "nauczyciel")
                 {
-                    DashboardNauczyciel dashboardNauczyciel = new DashboardNauczyciel(user);
+                    DashboardNauczyciel dashboardNauczyciel = new DashboardNauczyciel();
                     dashboardNauczyciel.Show();
                 }
                 

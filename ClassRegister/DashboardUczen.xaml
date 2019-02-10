@@ -20,7 +20,7 @@
             <views:UczenWykresy DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <Grid Loaded="DashboardLoad">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />

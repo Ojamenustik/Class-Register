@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace ClassRegister.ViewModels
 {
     public class UczenProfilModel
+
     {
+        
+        
     }
 }
