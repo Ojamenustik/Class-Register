@@ -53,5 +53,16 @@ namespace ClassRegister.Views
             DBhelp.DodajObecnosc(usr.id, czy, datav);
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            dziennik.ItemsSource = DBhelp.ObecnosciKlasa(1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            dziennik.ItemsSource = DBhelp.ObecnosciKlasa(2);
+        }
     }
 }
