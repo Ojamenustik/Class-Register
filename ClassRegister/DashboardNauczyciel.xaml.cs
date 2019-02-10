@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClassRegister.ViewModels;
+using ClassRegisterLibrary;
 
 namespace ClassRegister
 {
@@ -20,20 +21,30 @@ namespace ClassRegister
     /// </summary>
     public partial class DashboardNauczyciel : Window
     {
-        public DashboardNauczyciel()
+        public static User User { get; set; }
+        public DashboardNauczyciel(User user)
         {
             InitializeComponent();
+            User = user;
+
         }
 
-        private void BellBtn_Click(object sender, RoutedEventArgs e)
+        private void FaceBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void AccountBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            this.Close();
+            
         }
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new NauczycielDashboardModel();
-
         }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
@@ -50,5 +61,12 @@ namespace ClassRegister
         {
             DataContext = new NauczycielDziennikModel();
         }
+
+        private void DashboardLoad(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NauczycielDziennikModel();
+        }
+
+
     }
 }

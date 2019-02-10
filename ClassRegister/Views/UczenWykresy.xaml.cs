@@ -13,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassRegister.ViewModels;
 using ClassRegisterLibrary;
-
 
 namespace ClassRegister.Views
 {
@@ -26,29 +26,26 @@ namespace ClassRegister.Views
         public UczenWykresy()
         {
             InitializeComponent();
-           
-            
-            
-
-
         }
+
         void wykres1()
         {
 
             List<KeyValuePair<int, int>> valueList = new List<KeyValuePair<int, int>>();
 
 
-            Dictionary<int, int> db = DBhelp.OcenyUcznia(MainWindow.user.id);
+            Dictionary<int, int> db = DBhelp.OcenyUcznia(DashboardUczen.User.id);
             foreach (KeyValuePair<int, int> temp in db)
             {
                 valueList.Add(temp);
             }
             //Setting data for line chart
-           
-            
+
+
             mcChart.Visibility = Visibility.Hidden;
             mcChartpie.Visibility = Visibility.Visible;
             ((PieSeries)mcChartpie.Series[0]).ItemsSource = valueList;
+            
         }
         void wykres2()
         {
@@ -60,12 +57,12 @@ namespace ClassRegister.Views
 
             foreach (Uzytkownik temp in users)
             {
-                
+
                 double srednia = DBhelp.OcenyUczniaSrednia(temp.id);
 
                 if (srednia == 0) continue;
-                if(temp.id!=MainWindow.user.id)
-                tt.Add(temp.Nazwisko, (int)srednia);
+                if (temp.id != DashboardUczen.User.id)
+                    tt.Add(temp.Nazwisko, (int)srednia);
                 else
                     tt.Add("JA", (int)srednia);
 
@@ -78,7 +75,7 @@ namespace ClassRegister.Views
             // pieChart.Visibility = Visibility.Hidden;
 
 
-            
+
             mcChartpie.Visibility = Visibility.Hidden;
             mcChart.Visibility = Visibility.Visible;
             ((BarSeries)mcChart.Series[0]).ItemsSource = tt;
@@ -90,11 +87,14 @@ namespace ClassRegister.Views
 
         private void b2_Click(object sender, RoutedEventArgs e)
         {
+            mcChartpie.Visibility = Visibility.Visible;
             wykres2();
         }
 
         private void b1_Click(object sender, RoutedEventArgs e)
         {
+            mcChart.Visibility = Visibility.Visible;
+
             wykres1();
         }
     }

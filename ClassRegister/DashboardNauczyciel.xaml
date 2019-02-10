@@ -9,6 +9,7 @@
         xmlns:views="clr-namespace:ClassRegister.Views"
         mc:Ignorable="d"
         Title="DashboardNauczyciel" Height="600" Width="1024" WindowStartupLocation="CenterScreen" MinWidth="400" MinHeight="300" WindowStyle="None">
+    
     <Window.Resources>
         <DataTemplate x:Name="NauczycielDashboardTemplate" DataType="{x:Type viewmodels:NauczycielDashboardModel}">
             <views:NauczycielDashboard DataContext="{Binding}"/>
@@ -23,7 +24,7 @@
             <views:NauczycielDziennik DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid Loaded="DashboardLoad">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
@@ -49,13 +50,10 @@
 
         <Grid Grid.ColumnSpan="7" Background="#FF0D367D">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                <Button x:Name="BellBtn"  Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="BellBtn_Click">
-                    <materialDesign:PackIcon Kind="Bell"/>
-                </Button>
-                <Button x:Name="AccountBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+               <Button x:Name="AccountBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="AccountBtn_Click">
                     <materialDesign:PackIcon Kind="Account"/>
                 </Button>
-                <Button x:Name="PowerBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                <Button x:Name="PowerBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="FaceBtn_Click">
                     <materialDesign:PackIcon Kind="Power"/>
                 </Button>
             </StackPanel>

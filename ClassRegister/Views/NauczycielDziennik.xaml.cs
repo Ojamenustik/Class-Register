@@ -24,10 +24,11 @@ namespace ClassRegister.Views
         public NauczycielDziennik()
         {
             InitializeComponent();
+            Data.Text = DateTime.Today.ToString("dd/MM/yyyy");
             przedmiot.ItemsSource = DBhelp.Przedmioty();
             uczen.ItemsSource = DBhelp.Uczniowie();
             uczen2.ItemsSource = DBhelp.Uczniowie();
-            ocena.ItemsSource = new int []{ 1, 2, 3, 4, 5, 6 };
+            ocena.ItemsSource = new int[] { 1, 2, 3, 4, 5, 6 };
             Dictionary<int, string> czyobecny = new Dictionary<int, string>();
             czyobecny.Add(0, "Nie");
             czyobecny.Add(1, "Tak");
@@ -53,5 +54,7 @@ namespace ClassRegister.Views
             DBhelp.DodajObecnosc(usr.id, czy, datav);
 
         }
+
     }
 }
+
