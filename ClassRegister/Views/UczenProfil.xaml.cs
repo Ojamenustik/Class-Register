@@ -23,6 +23,10 @@ namespace ClassRegister.Views
         public UczenProfil()
         {
             InitializeComponent();
+            imiev.Text = DashboardUczen.User.imie;
+            nazwiskov.Text = DashboardUczen.User.nazwisko;
+            var srednia = DBhelp.OcenyUczniaSrednia(DashboardUczen.User.id).ToString("F1");
+            sredniav.Text = srednia;
         }
     }
 }
