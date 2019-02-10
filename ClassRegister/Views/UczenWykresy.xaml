@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:DVC="namespace:System.Windows.Controls.DataVisualization.Charting;
 assembly=System.Windows.Controls.DataVisualization.Toolkit"
-             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              xmlns:local="clr-namespace:ClassRegister.Views"
              xmlns:chartingToolkit1="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
@@ -26,16 +26,20 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
             <TextBlock Text="TWOJE WYKRESY" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1">
-            <StackPanel HorizontalAlignment="Center">
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="b1_Click">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="31*"/>
+                <RowDefinition Height="49*"/>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center" Margin="15,0" Grid.RowSpan="2">
+                <Button Name="b1" Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="b1_Click" >
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
                     <Grid Width="120">
-                        <TextBlock Text="MOJA OCENA WYKRES KOŁOWY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                        <TextBlock Text="Moje oceny wykres kołowy" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="b2_Click">
+                <Button Name="b2" Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="b2_Click" >
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
@@ -43,7 +47,7 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <TextBlock Text="ŚREDNIA NA TLE SZKOLY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="Button_Click">
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
@@ -51,38 +55,7 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <TextBlock Text="SUMA NIEOBECNOSCI" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
+                
 
 
             </StackPanel>
@@ -93,23 +66,34 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                 <Grid Margin="109,10,43,229">
 
                     <chartingToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChart"
-                                           Width="400"
-                                           Background="LightSteelBlue" Margin="24,25,24,-135" Visibility="Hidden">
+           Width="400"
+           Background="LightSteelBlue" Margin="24,25,24,-135">
                         <chartingToolkit:Chart.Series>
                             <chartingToolkit:BarSeries Title="Experience"    
-                                                       IndependentValueBinding="{Binding Path=Key}"
-                                                       DependentValueBinding="{Binding Path=Value}">
+            IndependentValueBinding="{Binding Path=Key}"
+            DependentValueBinding="{Binding Path=Value}">
                             </chartingToolkit:BarSeries>
                         </chartingToolkit:Chart.Series>
                     </chartingToolkit:Chart>
 
                     <chartingToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcChartpie"
-                                           Width="400" Height="250"
-                                           Background="LightSteelBlue" Visibility="Hidden">
+           Width="400" Height="250"
+           Background="LightSteelBlue">
                         <chartingToolkit:Chart.Series>
                             <chartingToolkit:PieSeries Title="Experiences"    
-                                                       IndependentValueBinding="{Binding Path=Key}"
-                                                       DependentValueBinding="{Binding Path=Value}">
+            IndependentValueBinding="{Binding Path=Key}"
+            DependentValueBinding="{Binding Path=Value}">
+                            </chartingToolkit:PieSeries>
+                        </chartingToolkit:Chart.Series>
+                    </chartingToolkit:Chart>
+                    
+                    <chartingToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcCharobec"
+           Width="400" Height="250"
+           Background="LightSteelBlue">
+                        <chartingToolkit:Chart.Series>
+                            <chartingToolkit:PieSeries Title="Experiences"    
+            IndependentValueBinding="{Binding Path=Text}"
+            DependentValueBinding="{Binding Path=Value}">
                             </chartingToolkit:PieSeries>
                         </chartingToolkit:Chart.Series>
                     </chartingToolkit:Chart>
@@ -122,5 +106,7 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
 
 
         </Grid>
-        </Grid>
+
+
+    </Grid>
 </UserControl>

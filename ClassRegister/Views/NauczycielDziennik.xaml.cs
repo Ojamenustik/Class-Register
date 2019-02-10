@@ -24,11 +24,11 @@ namespace ClassRegister.Views
         public NauczycielDziennik()
         {
             InitializeComponent();
-            Data.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            Datadzis.Text= DateTime.Now.ToString("M/d/yyyy");
             przedmiot.ItemsSource = DBhelp.Przedmioty();
             uczen.ItemsSource = DBhelp.Uczniowie();
             uczen2.ItemsSource = DBhelp.Uczniowie();
-            ocena.ItemsSource = new int[] { 1, 2, 3, 4, 5, 6 };
+            ocena.ItemsSource = new int []{ 1, 2, 3, 4, 5, 6 };
             Dictionary<int, string> czyobecny = new Dictionary<int, string>();
             czyobecny.Add(0, "Nie");
             czyobecny.Add(1, "Tak");
@@ -40,10 +40,10 @@ namespace ClassRegister.Views
         private void dodajocene_Click(object sender, RoutedEventArgs e)
         {
             Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
-            int przedmiotv = uczen.SelectedIndex;
-            int ocenav = ocena.SelectedIndex;
+            KeyValuePair<int, string> przedmiotv = (KeyValuePair<int,string>)przedmiot.SelectedValue;
+            int ocenav = ocena.SelectedIndex+1;
             string datav = data.SelectedDate.Value.ToShortDateString();
-            DBhelp.Dodajocene(usr.id, przedmiotv, ocenav, datav);
+            DBhelp.Dodajocene(usr.id, przedmiotv.Key, ocenav, datav);
         }
 
         private void dodajobecnosc_Click(object sender, RoutedEventArgs e)
@@ -55,6 +55,15 @@ namespace ClassRegister.Views
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            dziennik.ItemsSource = DBhelp.ObecnosciKlasa(1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            dziennik.ItemsSource = DBhelp.ObecnosciKlasa(2);
+        }
     }
 }
-

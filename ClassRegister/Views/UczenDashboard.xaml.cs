@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassRegisterLibrary;
 
+
+
 namespace ClassRegister.Views
 {
     /// <summary>
@@ -21,11 +23,23 @@ namespace ClassRegister.Views
     /// </summary>
     public partial class UczenDashboard : UserControl
     {
+        
         public UczenDashboard()
         {
             InitializeComponent();
-        }
 
+            List<obecnos> obecnosc =DBhelp.Obecnoscuczen(MainWindow.user.id);
+            DataGridOceny.ItemsSource = obecnosc;
+        }
+        
+
+        public class OcenyPrzedmiot
+        {
+
+            public string Przedmiot { get; set; }
+               public string  Dzień { get; set; }
+        public int Ocena { get; set; }
+}
         public List<OcenyPrzedmiot> op(int i)
         {
             List<int> przedmioty = new List<int>();
@@ -34,9 +48,9 @@ namespace ClassRegister.Views
                     przedmioty.Add(e);
             else
                 przedmioty.Add(i);
-
+           
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
-            List<ClassRegisterLibrary.OcenyPrzedmiot> xd = DBhelp.OcenyPrzedmioty(przedmioty);
+            List<ClassRegisterLibrary.OcenyPrzedmiot> xd = DBhelp.OcenyPrzedmioty(przedmioty,MainWindow.user.id);
             foreach (ClassRegisterLibrary.OcenyPrzedmiot temp in xd)
             {
                 ret.Add(new OcenyPrzedmiot() { Dzień = temp.Dzień, Ocena = temp.Ocena, Przedmiot = temp.Przedmiot });
@@ -44,71 +58,70 @@ namespace ClassRegister.Views
             }
             return ret;
         }
-
         private void allb_Click(object sender, RoutedEventArgs e)
         {
-
+            
 
 
             List<OcenyPrzedmiot> ret = op(0);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void matb_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(1);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void chemb_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(5);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void polb_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(3);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void angb_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(2);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void wfb_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(6);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void bio_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(4);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void fiz_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(7);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
 
         private void his_Click(object sender, RoutedEventArgs e)
         {
             List<OcenyPrzedmiot> ret = op(8);
 
-            ocenyucznia.ItemsSource = ret;
+            DataGridTest.ItemsSource = ret;
         }
     }
 }
