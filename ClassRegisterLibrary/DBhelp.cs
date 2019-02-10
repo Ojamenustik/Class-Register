@@ -137,8 +137,34 @@ namespace ClassRegister
             }
             return ret;
         }
+        public static List<obecnos> Obecnoscuczen(int id)
+        {
 
-        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal)
+            List<obecnos> ret = new List<obecnos>();
+            using (SQLiteConnection con = new SQLiteConnection(ConString))
+            {
+                int i = 0;
+                SQLiteCommand com = new SQLiteCommand(
+                    "select JestObecny, Dzien from Obecnosc  Where IdUcznia="+ id,
+                    con);
+                con.Open();
+
+                SQLiteDataReader reader = com.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetInt32(0)==1)
+                    ret.Add(new obecnos() { Value = "Obecny", Text = reader.GetString(1) });
+                    else
+                        ret.Add(new obecnos() { Value = "nieobecny", Text = reader.GetString(1) });
+                }
+
+                reader.Close();
+            }
+            return ret;
+        }
+
+        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal,int uid)
         {
 
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
@@ -147,7 +173,7 @@ namespace ClassRegister
                 {
                     SQLiteCommand com = new SQLiteCommand(
                         $@"SELECT p.Przedmiot, ou.Ocena, ou.Dzien from OcenyUcznia ou join Przedmioty p 
-                          on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu={temp}",con);
+                          on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = "+uid+" and p.IdPrzedmiotu={temp}",con);
 
                     con.Open();
                     

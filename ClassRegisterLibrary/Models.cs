@@ -31,8 +31,16 @@ namespace ClassRegisterLibrary
 
 
     }
+    public class obecnos
+    {
 
-        public class Uzytkownik
+        public string Text { get; set; }
+        public string Value { get; set; }
+
+
+    }
+
+    public class Uzytkownik
         {
             public int id { get; set; }
         public string Imie { get; set; }

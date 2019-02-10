@@ -47,7 +47,7 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <TextBlock Text="ŚREDNIA NA TLE SZKOLY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
+                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand" Click="Button_Click">
                     <Button.Effect>
                         <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
                     </Button.Effect>
@@ -113,6 +113,17 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <chartingToolkit:Chart.Series>
                             <chartingToolkit:PieSeries Title="Experiences"    
             IndependentValueBinding="{Binding Path=Key}"
+            DependentValueBinding="{Binding Path=Value}">
+                            </chartingToolkit:PieSeries>
+                        </chartingToolkit:Chart.Series>
+                    </chartingToolkit:Chart>
+                    
+                    <chartingToolkit:Chart Canvas.Top="80" Canvas.Left="10" Name="mcCharobec"
+           Width="400" Height="250"
+           Background="LightSteelBlue">
+                        <chartingToolkit:Chart.Series>
+                            <chartingToolkit:PieSeries Title="Experiences"    
+            IndependentValueBinding="{Binding Path=Text}"
             DependentValueBinding="{Binding Path=Value}">
                             </chartingToolkit:PieSeries>
                         </chartingToolkit:Chart.Series>

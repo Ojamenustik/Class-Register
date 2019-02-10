@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassRegisterLibrary;
 
 
 
@@ -26,8 +27,9 @@ namespace ClassRegister.Views
         public UczenDashboard()
         {
             InitializeComponent();
-           
 
+            List<obecnos> obecnosc =DBhelp.Obecnoscuczen(MainWindow.user.id);
+            DataGridOceny.ItemsSource = obecnosc;
         }
         
 
@@ -48,7 +50,7 @@ namespace ClassRegister.Views
                 przedmioty.Add(i);
            
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
-            List<ClassRegisterLibrary.OcenyPrzedmiot> xd = DBhelp.OcenyPrzedmioty(przedmioty);
+            List<ClassRegisterLibrary.OcenyPrzedmiot> xd = DBhelp.OcenyPrzedmioty(przedmioty,MainWindow.user.id);
             foreach (ClassRegisterLibrary.OcenyPrzedmiot temp in xd)
             {
                 ret.Add(new OcenyPrzedmiot() { Dzień = temp.Dzień, Ocena = temp.Ocena, Przedmiot = temp.Przedmiot });

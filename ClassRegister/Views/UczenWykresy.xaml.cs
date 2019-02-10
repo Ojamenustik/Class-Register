@@ -26,11 +26,12 @@ namespace ClassRegister.Views
         public UczenWykresy()
         {
             InitializeComponent();
-           
-            
-            
 
 
+
+            mcChart.Visibility = Visibility.Hidden;
+            mcChartpie.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Hidden;
         }
         void wykres1()
         {
@@ -47,16 +48,37 @@ namespace ClassRegister.Views
            
             
             mcChart.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Hidden;
             mcChartpie.Visibility = Visibility.Visible;
             ((PieSeries)mcChartpie.Series[0]).ItemsSource = valueList;
         }
+        void wykres3()
+        {
+
+            
+
+            List<obecnos> db = DBhelp.Obecnoscuczen(MainWindow.user.id);
+            int obecny = db.Where(t => t.Value == "Obecny").Count();
+            int nobecny = db.Where(t => t.Value == "nieobecny").Count();
+            List<pomoc> ret = new List<pomoc>();
+            ret.Add(new pomoc() { Value = obecny, Text = "obecny" });
+            ret.Add(new pomoc() { Value = nobecny, Text = "nieobecny" });
+            mcChart.Visibility = Visibility.Hidden;
+            mcChartpie.Visibility = Visibility.Hidden;
+            mcCharobec.Visibility = Visibility.Visible;
+            ((PieSeries)mcCharobec.Series[0]).ItemsSource = ret;
+
+
+
+
+        }
         void wykres2()
         {
-            List<KeyValuePair<string, int>> valueList = new List<KeyValuePair<string, int>>();
+            List<KeyValuePair<string, double>> valueList = new List<KeyValuePair<string, double>>();
             List<Uzytkownik> users = DBhelp.Uczniowie();
 
 
-            Dictionary<string, int> tt = new Dictionary<string, int>();
+            Dictionary<string, double> tt = new Dictionary<string, double>();
 
             foreach (Uzytkownik temp in users)
             {
@@ -65,9 +87,9 @@ namespace ClassRegister.Views
 
                 if (srednia == 0) continue;
                 if(temp.id!=MainWindow.user.id)
-                tt.Add(temp.Nazwisko, (int)srednia);
+                tt.Add(temp.Nazwisko, srednia);
                 else
-                    tt.Add("JA", (int)srednia);
+                    tt.Add("JA", srednia);
 
 
             }
@@ -78,7 +100,7 @@ namespace ClassRegister.Views
             // pieChart.Visibility = Visibility.Hidden;
 
 
-            
+            mcCharobec.Visibility = Visibility.Hidden;
             mcChartpie.Visibility = Visibility.Hidden;
             mcChart.Visibility = Visibility.Visible;
             ((BarSeries)mcChart.Series[0]).ItemsSource = tt;
@@ -96,6 +118,11 @@ namespace ClassRegister.Views
         private void b1_Click(object sender, RoutedEventArgs e)
         {
             wykres1();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            wykres3();
         }
     }
 }
