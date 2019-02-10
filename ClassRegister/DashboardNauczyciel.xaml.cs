@@ -25,22 +25,15 @@ namespace ClassRegister
             InitializeComponent();
         }
 
-        private void FaceBtn_Click(object sender, RoutedEventArgs e)
+        private void BellBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void AccountBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow window = new MainWindow();
-            window.Show();
-            this.Close();
-            
         }
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new NauczycielDashboardModel();
+
         }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
@@ -57,12 +50,5 @@ namespace ClassRegister
         {
             DataContext = new NauczycielDziennikModel();
         }
-
-        private void DashboardLoad(object sender, RoutedEventArgs e)
-        {
-            DataContext = new NauczycielDziennikModel();
-        }
-
-
     }
 }

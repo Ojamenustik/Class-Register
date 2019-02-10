@@ -5,81 +5,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClassRegister.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
-    <Grid Background="#FF9A999F">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="6*" />
-        </Grid.ColumnDefinitions>
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="#FF9A999F" Margin="0,10,-118,0">
+        <Label Content="Dodaj ocene" HorizontalAlignment="Left" Margin="22,31,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="uczen" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="2.605,0.591"   >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}: {1}">
+                                <Binding Path="Imie"/>
+                                <Binding Path="Nazwisko"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="przedmiot" HorizontalAlignment="Left" Margin="134,62,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="2.605,0.591"
+                  DisplayMemberPath="Value"
+                  />
+        <ComboBox Name="ocena" HorizontalAlignment="Left" Margin="213,64,0,0" VerticalAlignment="Top" Width="24"/>
+        <DatePicker Name="data" HorizontalAlignment="Left" Margin="242,62,0,0" VerticalAlignment="Top"/>
+        <Button Name="dodajocene" Content="Dodaj" HorizontalAlignment="Left" Margin="346,64,0,0" VerticalAlignment="Top" Width="62" Click="dodajocene_Click"/>
+        <Label Content="Dodaj obecnosc" HorizontalAlignment="Left" Margin="22,132,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="uczen2" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="2.605,0.591"   >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}: {1}">
+                                <Binding Path="Imie"/>
+                                <Binding Path="Nazwisko"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DatePicker x:Name="data2" HorizontalAlignment="Left" Margin="242,176,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="obecnosc" HorizontalAlignment="Left" Margin="149,178,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="2.605,0.591"
+            DisplayMemberPath="Value"
+                  />
+        <Button x:Name="dodajobecnosc" Content="Dodaj" HorizontalAlignment="Left" Margin="346,176,0,0" VerticalAlignment="Top" Width="62" Click="dodajobecnosc_Click" />
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*" />
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Column="1" Grid.Row="0">
-            <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="DZIENNIK NA DZIEŃ: " FontSize="25" />
-                <TextBlock Text="20-02-2018" FontSize="20" Margin="2,3"></TextBlock>
-            </WrapPanel>
-        </Grid>
-        <Grid Grid.Column="0"  Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,3">
-            <TextBlock Text="Twoje klasy:" FontSize="20"/>
-        </Grid>
-        <Grid Grid.Column="0" Grid.Row="1">
-            <StackPanel HorizontalAlignment="Center">
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="5B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="1B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="2A" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="3C" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="4B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="1" Background="Pink" Margin="-5,0,10,0">
-            <DataGrid Name="dziennik">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Imie}" Header="Imie"/>
-                    <DataGridTextColumn Binding="{Binding Nazwisko}" Header="Nazwisko"/>
-                    <DataGridTextColumn Binding="{Binding Ocena}" Header="Ocena"/>
-                    <DataGridTextColumn Binding="{Binding Obecnosc}" Header="Obecność"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
     </Grid>
 </UserControl>

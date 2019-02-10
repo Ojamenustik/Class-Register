@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ClassRegisterLibrary;
 
 namespace ClassRegister
 {
@@ -13,5 +14,6 @@ namespace ClassRegister
     /// </summary>
     public partial class App : Application
     {
+        public User user { get; set; }
     }
 }

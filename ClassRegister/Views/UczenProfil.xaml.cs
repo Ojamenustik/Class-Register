@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassRegisterLibrary;
 
 namespace ClassRegister.Views
 {
@@ -23,6 +24,13 @@ namespace ClassRegister.Views
         public UczenProfil()
         {
             InitializeComponent();
+            imiev.Text = MainWindow.user.imie;
+            nazwiskov.Text = MainWindow.user.nazwisko; 
+            var xdd= DBhelp.OcenyUczniaSrednia(MainWindow.user.id).ToString();
+            sredniav.Text = xdd;
+
+
+
         }
     }
 }

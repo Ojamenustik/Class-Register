@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassRegisterLibrary;
+
 using System.Data;
 using System.IO;
 
+
 namespace ClassRegister
 {
-    public class DBhelp
+    public static class DBhelp
     {
+
+
 
         static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
         
@@ -54,6 +58,30 @@ namespace ClassRegister
                  
                 reader.Close();
 
+            }
+            return ret;
+        }
+       
+            public static double OcenyUczniaSrednia(int uId)
+        {
+            double ret = 0.0;
+            using (SQLiteConnection con = new SQLiteConnection(ConString))
+            {
+
+                SQLiteCommand com = new SQLiteCommand(
+                    "Select  avg(Ocena) as value from OcenyUcznia where Iducznia ="+ uId.ToString(),
+                    con);
+                con.Open();
+
+                SQLiteDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader.IsDBNull(0) == true)
+                        ret = 0.0;
+                    else
+                    ret = reader.GetDouble(0);
+
+                }
             }
             return ret;
         }
@@ -110,11 +138,10 @@ namespace ClassRegister
             return ret;
         }
 
-        public static List<DataTable> OcenyPrzedmioty(List<int> tempVal)
+        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal)
         {
-            
-            List<DataTable> ret = new List<DataTable>();
-            int i = 0;
+
+            List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
             foreach (int temp in tempVal) { 
                 using (SQLiteConnection con = new SQLiteConnection(ConString))
                 {
@@ -123,23 +150,21 @@ namespace ClassRegister
                           on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu={temp}",con);
 
                     con.Open();
-                    ret.Add(new DataTable());
-                    //SQLiteDataReader reader = com.ExecuteReader();
-                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(com);
+                    
+                    SQLiteDataReader reader = com.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
 
-//                    while (reader.Read())
-//                    {
-//
-//                        ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
-//
-//                    }
-//                    reader.Close();
-                    dataAdapter.Fill(ret[i]);
-                    ++i;
+                        ret.Add(new OcenyPrzedmiot(){ Przedmiot= reader.GetString(0),Ocena= reader.GetInt32(1),Dzień= reader.GetString(2) });
+
+                    }
+                    reader.Close();
                 }
             }
             return ret;
         }
+      
 
         public static List<Uzytkownik> Uczniowie()
         {
