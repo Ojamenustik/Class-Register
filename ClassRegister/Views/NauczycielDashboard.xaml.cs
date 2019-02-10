@@ -23,7 +23,6 @@ namespace ClassRegister.Views
         public NauczycielDashboard()
         {
             InitializeComponent();
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,6 +35,12 @@ namespace ClassRegister.Views
         {
             oceny.ItemsSource = DBhelp.OcenyPrzedmioty(2);
             obecnosci.ItemsSource = DBhelp.ObecnosciKlasa(2);
+        }
+
+        private void OnLoadTable(object sender, RoutedEventArgs e)
+        {
+            oceny.ItemsSource = DBhelp.OcenyPrzedmioty(1);
+            obecnosci.ItemsSource = DBhelp.ObecnosciKlasa(1);
         }
     }
 }

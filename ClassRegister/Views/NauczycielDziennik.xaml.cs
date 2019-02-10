@@ -34,25 +34,39 @@ namespace ClassRegister.Views
             czyobecny.Add(1, "Tak");
             obecnosc.ItemsSource = czyobecny;
 
-
         }
 
         private void dodajocene_Click(object sender, RoutedEventArgs e)
         {
-            Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
-            KeyValuePair<int, string> przedmiotv = (KeyValuePair<int,string>)przedmiot.SelectedValue;
-            int ocenav = ocena.SelectedIndex+1;
-            string datav = data.SelectedDate.Value.ToShortDateString();
-            DBhelp.Dodajocene(usr.id, przedmiotv.Key, ocenav, datav);
+            try
+            {
+                Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
+                KeyValuePair<int, string> przedmiotv = (KeyValuePair<int, string>)przedmiot.SelectedValue;
+                int ocenav = ocena.SelectedIndex + 1;
+                string datav = data.SelectedDate.Value.ToShortDateString();
+                DBhelp.Dodajocene(usr.id, przedmiotv.Key, ocenav, datav);
+            }
+            catch (NullReferenceException exception)
+            {
+
+            }
+           
         }
 
         private void dodajobecnosc_Click(object sender, RoutedEventArgs e)
         {
-            Uzytkownik usr = (Uzytkownik)uczen2.SelectedItem;
-            int czy = obecnosc.SelectedIndex;
-            string datav = data2.SelectedDate.Value.ToShortDateString();
-            DBhelp.DodajObecnosc(usr.id, czy, datav);
+            try
+            {
+                Uzytkownik usr = (Uzytkownik)uczen2.SelectedItem;
+                int czy = obecnosc.SelectedIndex;
+                string datav = data2.SelectedDate.Value.ToShortDateString();
+                DBhelp.DodajObecnosc(usr.id, czy, datav);
+                dziennik.ItemsSource = DBhelp.ObecnosciKlasa(1);
+            }
+            catch (NullReferenceException exception)
+            {
 
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -64,6 +78,11 @@ namespace ClassRegister.Views
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             dziennik.ItemsSource = DBhelp.ObecnosciKlasa(2);
+        }
+
+        private void OnLoadTable(object sender, RoutedEventArgs e)
+        {
+            dziennik.ItemsSource = DBhelp.ObecnosciKlasa(1);
         }
     }
 }

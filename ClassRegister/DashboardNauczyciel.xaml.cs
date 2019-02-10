@@ -61,5 +61,10 @@ namespace ClassRegister
         {
             DataContext = new NauczycielDziennikModel();
         }
+
+        private void OnLoadDashboard(object sender, RoutedEventArgs e)
+        {
+            DataContext = new NauczycielDziennikModel();
+        }
     }
 }

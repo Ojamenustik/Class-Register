@@ -60,9 +60,6 @@ namespace ClassRegister.Views
         }
         private void allb_Click(object sender, RoutedEventArgs e)
         {
-            
-
-
             List<OcenyPrzedmiot> ret = op(0);
 
             DataGridTest.ItemsSource = ret;
@@ -121,6 +118,12 @@ namespace ClassRegister.Views
         {
             List<OcenyPrzedmiot> ret = op(8);
 
+            DataGridTest.ItemsSource = ret;
+        }
+        
+        private void OnLoadDashboard(object sender, RoutedEventArgs e)
+        {
+            List<OcenyPrzedmiot> ret = op(0);
             DataGridTest.ItemsSource = ret;
         }
     }
