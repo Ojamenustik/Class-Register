@@ -12,6 +12,11 @@ using System.IO;
 
 namespace ClassRegister
 {
+    /// <summary>
+    /// Klasa <c>DBhelp</c> jest kolekcja metod statycznych wykorzystujacych 
+    /// klasy biblioteki <c>System.Data.SQLite</c> do komunikacji z baza danych CRDB2.db
+    /// zwlaszcza do pobierania z niej danych do wyswietlania w formie wykresow 
+    /// </summary>
     public static class DBhelp
     {
 
@@ -20,11 +25,11 @@ namespace ClassRegister
         static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
         
        /// <summary>
-       /// Logowanie do bazy danych
+       /// Metoda Login odpowiada za logowanie do bazy danych
        /// </summary>
        /// <param name="user"> nazwa uzytkownika </param>
        /// <param name="pass"> haslo uzytkownika </param>
-       /// <returns></returns>
+       /// <returns>obiekt <c>User</c></returns>
         public static User Login(string user,string pass)
         {
             User ret = null;
@@ -61,8 +66,13 @@ namespace ClassRegister
             }
             return ret;
         }
-       
-            public static double OcenyUczniaSrednia(int uId)
+        /// <summary>
+        /// Metoda OcenyUczniaSrednia oblicza srednia ocen dla ucznia o podanym id
+        /// Jesli uczen nie ma ocen, srednia = 0.0
+        /// </summary>
+        /// <param name="uId">id ucznia</param>
+        /// <returns>srednia ocen ucznia typ <c>double</c></returns>
+        public static double OcenyUczniaSrednia(int uId)
         {
             double ret = 0.0;
             using (SQLiteConnection con = new SQLiteConnection(ConString))
@@ -85,6 +95,12 @@ namespace ClassRegister
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda SredniaKlasy dodaje do listy srednia ocen i nazwe klasy dla ktorej srednia jest liczona
+        /// jesli srednia ocen dla danej klasy nie moze byc wyliczona ze wzgledu na brak ocen uczniow, do listy
+        /// dodawana jest srednia 0.0
+        /// </summary>
+        /// <returns><c>List</c> obiektow <c>srednklasy</c></returns>
         public static List<srednklasy> SredniaKlasy( )
         {
             List<srednklasy> ret = new List<srednklasy>();
@@ -93,9 +109,9 @@ namespace ClassRegister
 
                 SQLiteCommand com = new SQLiteCommand(
                     @"Select  avg(Ocena) as value , k.nazwa from OcenyUcznia o
-join Uzytkownik u on o.IdUcznia=u.id
-Join Klasa k on u.klasaId=k.IdKlasa
- group by u.klasaId",
+                    join Uzytkownik u on o.IdUcznia=u.id
+                    Join Klasa k on u.klasaId=k.IdKlasa
+                    group by u.klasaId",
                     con);
                 con.Open();
 
@@ -113,6 +129,12 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda ObecnosciKlasy podaje zagregowana ilosc obecnosci
+        /// lub nieobecnosci wraz z nazwa klasy dla ktorej liczona jest obecnosc
+        /// </summary>
+        /// <param name="czy">dla czy=0 nieobecnosci, dla czy=1 obecnosci</param>
+        /// <returns><c>List</c> nazwa klasy + ilosc obecnych/nieobecnych</returns>
         public static List<pomoc> ObecnosciKlasy(int czy)
         {
             List<pomoc> ret = new List<pomoc>();
@@ -121,9 +143,9 @@ Join Klasa k on u.klasaId=k.IdKlasa
 
                 SQLiteCommand com = new SQLiteCommand(
                     @"Select  k.nazwa, count(o.JestObecny) as obecnosc from Obecnosc o
-join Uzytkownik u on o.IdUcznia=u.id
-Join Klasa k on u.klasaId=k.IdKlasa
- Where o.JestObecny="+ czy.ToString()+ " group by u.klasaId ",
+                     join Uzytkownik u on o.IdUcznia=u.id
+                     Join Klasa k on u.klasaId=k.IdKlasa
+                     Where o.JestObecny="+ czy.ToString()+ " group by u.klasaId ",
                     con);
                 con.Open();
 
@@ -137,6 +159,11 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda OcenyUcznia zwraca ilosc kazdej z ocen dla ucznia o wybranym id
+        /// </summary>
+        /// <param name="uId">id ucznia</param>
+        /// <returns><c>Dictionary</c> para (<c>int</c> ocena, <c>int</c> count(ocena))</returns>
         public static Dictionary<int, int> OcenyUcznia(int uId)
         {
             Dictionary<int, int> ret = new Dictionary<int, int>();
@@ -165,7 +192,10 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
-
+        /// <summary>
+        /// Metoda Przedmioty zwraca z bazy rekordy z tabeli Przedmioty
+        /// </summary>
+        /// <returns><c>Dictionary</c> para (<c>int</c> id, <c>string</c> nazwa przedmiotu)</returns>
         public static Dictionary<int, string> Przedmioty()
         {
             Dictionary<int, string> ret = new Dictionary<int, string>();
@@ -189,6 +219,14 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda Obecnoscuczen kataloguje obecnosci w konkretnych dniach ucznia o podanym id
+        /// dla JestObecny = 0 rejestrowana jest nieobecnosc, dla JestObecny = 1 obecnosc
+        /// w obiekcie obecnos z wlasciwosciami <c>string</c><c>Value</c>=Obecny/Nieobecny
+        /// i <c>string</c><c>Text</c>=Data
+        /// </summary>
+        /// <param name="id">id ucznia</param>
+        /// <returns><c>List</c> <c>obecnos</c></returns>
         public static List<obecnos> Obecnoscuczen(int id)
         {
 
@@ -215,7 +253,13 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
-
+        /// <summary>
+        /// Metoda OcenyPrzedmioty zapisuje do <c>List</c> obiekty <c>OcenyPrzedmiot</c> 
+        /// z ocena z przedmiotu ktora otrzymal uczen o podanym id oraz date w ktora ta ocene otrzymal
+        /// </summary>
+        /// <param name="tempVal">lista id przedmiotow</param>
+        /// <param name="uid">id ucznia</param>
+        /// <returns><c>List</c><c>OcenyPrzedmiot</c></returns>
         public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal,int uid)
         {
 
@@ -242,6 +286,12 @@ Join Klasa k on u.klasaId=k.IdKlasa
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda OcenyPrzedmioty kataloguje oceny wraz z imionami i nazwiskami uczniow oraz dniem w jakim
+        /// je otrzymali dla wybranej klasy
+        /// </summary>
+        /// <param name="klasa">id klasy</param>
+        /// <returns><c>List</c> obiektow <c>OcenyNauczyciel</c></returns>
         public static List<OcenyNauczyciel> OcenyPrzedmioty( int klasa)
         {
 
@@ -251,9 +301,9 @@ Join Klasa k on u.klasaId=k.IdKlasa
                 {
                     SQLiteCommand com = new SQLiteCommand(
                         @"select p.Przedmiot, u.Imie,u.Nazwisko,o.Dzien, o.Ocena from OcenyUcznia o
-join Uzytkownik u on u.id=o.IdUcznia 
-join Przedmioty p on p.IdPrzedmiotu=o.IdPrzedmiotu
-where u.klasaId="+klasa.ToString(), con);
+                        join Uzytkownik u on u.id=o.IdUcznia 
+                        join Przedmioty p on p.IdPrzedmiotu=o.IdPrzedmiotu
+                        where u.klasaId="+klasa.ToString(), con);
 
                     con.Open();
 
@@ -270,6 +320,12 @@ where u.klasaId="+klasa.ToString(), con);
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda ObecnosciKlasa kataloguje obecnosci w dany dzien wraz z imionami i nazwiskami uczniow 
+        /// dla wybranej klasy; jesli uczen nie jest obecny, <c>ObecnoscNauczyciel.Obecnosc="nie"</c>
+        /// </summary>
+        /// <param name="klasa">id klasy</param>
+        /// <returns><c>List</c> obiektow <c>ObecnoscNauczyciel</c></returns>
         public static List<ObecnoscNauczyciel> ObecnosciKlasa(int klasa)
         {
 
@@ -301,6 +357,11 @@ where u.klasaId=" + klasa.ToString(), con);
             }
             return ret;
         }
+        /// <summary>
+        /// Metoda Klasy zwraca tabele Klasa w formie listy par id, nazwa klasy
+        /// </summary>
+        /// <param name="klasa">id klasy</param>
+        /// <returns><c>List</c> obiektow <c>pomoc</c></returns>
         public static List<pomoc> Klasy(int klasa)
         {
 
@@ -327,7 +388,11 @@ where u.klasaId=" + klasa.ToString(), con);
             return ret;
         }
 
-
+        /// <summary>
+        /// Metoda Uczniowie zwraca tabele Uzytkownik w formie listy uczniow z ich id, imieniem, nazwiskiem
+        /// (z wylaczeniem Uzytkownikow o typie "nauczyciel")
+        /// </summary>
+        /// <returns><c>List</c> obiektow <c>Uzytkownik</c></returns>
         public static List<Uzytkownik> Uczniowie()
         {
             List<Uzytkownik> ret = new List<Uzytkownik>();
@@ -354,7 +419,14 @@ where u.klasaId=" + klasa.ToString(), con);
             }
             return ret;
         }
-
+        /// <summary>
+        /// Metoda Dodajocene dodaje do tabeli OcenyUcznia nowa ocene
+        /// </summary>
+        /// <param name="idu">id ucznia</param>
+        /// <param name="idp">id przedmiotu</param>
+        /// <param name="oce">ocena <c>int</c></param>
+        /// <param name="date">data</param>
+        /// <returns></returns>
         public static int Dodajocene(int idu,int idp,int oce,string date)
         {
             int reader = 0;
@@ -371,9 +443,16 @@ where u.klasaId=" + klasa.ToString(), con);
             }
             return reader;
         }
-
+        /// <summary>
+        /// Metoda DodajObecnosc dodaje do tabeli Obecnosc nowa obecnosc w podanym dniu dla podanego ucznia
+        /// obecnosc=0 uczen nieobecny, obecnosc=1 uczen obecny
+        /// </summary>
+        /// <param name="idu">id ucznia</param>
+        /// <param name="obecnosc">obecnosc</param>
+        /// <param name="date">data</param>
+        /// <returns></returns>
         public static int DodajObecnosc(int idu,  int obecnosc, string date)
-        {
+        {  
             int reader = 0;
             using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
