@@ -1,4 +1,4 @@
-# <h1 id="opis">Class Register</h1>
+<h1 id="opis">Class Register</h1>
 Class Register to aplikacja stworzona na potrzeby projektu semestralnego z przedmiotu "Projektowanie obiektowe C#" przez <a href="tworcyS">trzy osoby</a>. 
 Aplikacja ma na zadanie możliwość logowanie się do systemu jako uczeń lub nauczyciel (dwa różdne dashboardy i funkcjonalności dla tych dwóch typów użytkowników).<br>
 Po zalogowaniu uczeń może przejrzeć swoje oceny i obecności w zakładce Dashboard, obejrzeć swoje dane w zakładce Profil i obejrzeć wykresy, które pomogą mu zobrazować sobie swoje oceny na tle klasy oraz swój postęp.<br>
