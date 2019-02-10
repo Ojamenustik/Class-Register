@@ -6,12 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassRegisterLibrary;
 
+using System.Data;
+using System.IO;
+
+
 namespace ClassRegister
 {
     public static class DBhelp
     {
-       public static string ConString = @"Data Source = C:\Users\well\Downloads\Class-Register-WPF_App\CRDB2.db";
 
+
+
+        static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
+        
        /// <summary>
        /// Logowanie do bazy danych
        /// </summary>
