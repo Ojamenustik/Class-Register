@@ -22,7 +22,7 @@ namespace ClassRegister
 
 
 
-        static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
+        static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\CRDB2.db")}";
         
        /// <summary>
        /// Metoda Login odpowiada za logowanie do bazy danych
