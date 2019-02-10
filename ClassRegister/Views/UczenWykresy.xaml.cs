@@ -124,5 +124,9 @@ namespace ClassRegister.Views
         {
             wykres3();
         }
+        private void OnLoadTable(object sender, RoutedEventArgs e)
+        {
+            wykres1();
+        }
     }
 }

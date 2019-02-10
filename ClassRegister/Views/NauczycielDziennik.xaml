@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClassRegister.Views"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    <Grid Background="#FF9A999F">
+    <Grid Background="#FF9A999F" Loaded="OnLoadTable">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="6*" />
@@ -77,9 +78,15 @@
                 <ComboBox Name="przedmiot" HorizontalAlignment="Left" Margin="134,62,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="2.605,0.591"
                   DisplayMemberPath="Value"
                   />
-                <ComboBox Name="ocena" HorizontalAlignment="Left" Margin="213,64,0,0" VerticalAlignment="Top" Width="24"/>
-                <DatePicker Name="data" HorizontalAlignment="Left" Margin="242,62,0,0" VerticalAlignment="Top"/>
-                <Button Name="dodajocene" Content="Dodaj" HorizontalAlignment="Left" Margin="346,64,0,0" VerticalAlignment="Top" Width="62" Click="dodajocene_Click"/>
+                <ComboBox Name="ocena" HorizontalAlignment="Left" Margin="213,62,0,0" VerticalAlignment="Top" Width="40"/>
+                <DatePicker x:Name="data" HorizontalAlignment="Left" Margin="260,62,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"  >
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"></Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <Button Name="dodajocene" Content="Dodaj" HorizontalAlignment="Left" Margin="386,64,0,0" VerticalAlignment="Top" Width="62" Click="dodajocene_Click"/>
                 <Label Content="Dodaj obecnosc" HorizontalAlignment="Left" Margin="22,132,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="uczen2" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="2.605,0.591"   >
                     <ComboBox.ItemTemplate>
@@ -95,11 +102,17 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <DatePicker x:Name="data2" HorizontalAlignment="Left" Margin="242,176,0,0" VerticalAlignment="Top"/>
+                <DatePicker x:Name="data2" HorizontalAlignment="Left" Margin="232,176,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="IsReadOnly" Value="True"></Setter>
+                    </Style>
+                </DatePicker.Resources>
+                </DatePicker>
                 <ComboBox x:Name="obecnosc" HorizontalAlignment="Left" Margin="149,178,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="2.605,0.591"
             DisplayMemberPath="Value"
                   />
-                <Button x:Name="dodajobecnosc" Content="Dodaj" HorizontalAlignment="Left" Margin="346,176,0,0" VerticalAlignment="Top" Width="62" Click="dodajobecnosc_Click" />
+                <Button x:Name="dodajobecnosc" Content="Dodaj" HorizontalAlignment="Left" Margin="366,176,0,0" VerticalAlignment="Top" Width="62" Click="dodajobecnosc_Click" />
 
             </Grid>
         </Grid>

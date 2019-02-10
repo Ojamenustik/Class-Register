@@ -47,7 +47,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.ColumnSpan="7" Background="#FF0D367D">
+        <Grid Grid.ColumnSpan="7" Background="#FF0D367D" Loaded="OnLoadDashboard">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
                 <Button x:Name="AccountBtn" Width="25" Height="25"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="AccountBtn_Click">
                     <materialDesign:PackIcon Kind="Account"/>

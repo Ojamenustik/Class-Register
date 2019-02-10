@@ -56,5 +56,14 @@ namespace ClassRegister.Views
             List<pomoc> wy3 = DBhelp.ObecnosciKlasy(0);
             ((PieSeries)mcCharobec2.Series[0]).ItemsSource = wy3;
         }
+        private void OnLoadTable(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.DataVisualization.Charting.ColumnSeries ColumnSeries = new System.Windows.Controls.DataVisualization.Charting.ColumnSeries();
+            List<srednklasy> wy1 = DBhelp.SredniaKlasy();
+            mcChart.Visibility = Visibility.Visible;
+            mcCharobec.Visibility = Visibility.Hidden;
+            mcCharobec2.Visibility = Visibility.Hidden;
+            ((BarSeries)mcChart.Series[0]).ItemsSource = wy1;
+        }
     }
 }
