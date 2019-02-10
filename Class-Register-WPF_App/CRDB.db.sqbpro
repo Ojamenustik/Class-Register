@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/well/Downloads/Class-Register-master/CRDB.db" foreign_keys="1"/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3300"/><expanded_item id="0" parent="1"/><expanded_item id="0" parent="0"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Login"/><default_encoding codec=""/><browsetable_info data="AAAABAAAABQAVQB6AHkAdABrAG8AdwBuAGkAawAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////AAAAAP////8AAAAWAE8AYwBlAG4AeQBVAGMAegBuAGkAYQAAAAEAAAABAAAAAAAAAAIAAAADAAAAAAAAAAEAAAAAAAAAAAD//////////wAAAAD/////AAAACgBMAG8AZwBpAG4AAAAAAAAAAAAAAAAAAAADAAAAAwAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAD//////////wAAAAD/////AAAACgBLAGwAYQBzAGEAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAP//////////AAAAAP////8="/></tab_browse><tab_sql><sql name="SQL 1">insert into OcenyUcznia values(8,1,1,3,&quot;2019-01-28&quot;)</sql><sql name="SQL 2">
+
+SELECT Ocena,
+    COUNT(Ocena) AS ilosc
+FROM OcenyUcznia
+GROUP BY Ocena</sql><current_tab id="0"/></tab_sql></sqlb_project>

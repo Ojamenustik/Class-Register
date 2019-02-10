@@ -55,38 +55,7 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <TextBlock Text="SUMA NIEOBECNOSCI" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
-                <Button Height="50" Width="150" Margin="10,5" FontFamily="Copperplate Gothic Light" FontSize="12" Background="#FF1D1D51" Foreground="#FFFDFDFD" Cursor="Hand">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="320" RenderingBias="Quality" BlurRadius="10"/>
-                    </Button.Effect>
-                    <Grid Width="120">
-                        <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                    </Grid>
-                </Button>
+                
 
 
             </StackPanel>

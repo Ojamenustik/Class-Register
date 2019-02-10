@@ -39,8 +39,8 @@ namespace ClassRegister.Views
         private void dodajocene_Click(object sender, RoutedEventArgs e)
         {
             Uzytkownik usr = (Uzytkownik)uczen.SelectedItem;
-            int przedmiotv = uczen.SelectedIndex;
-            int ocenav = ocena.SelectedIndex;
+            int przedmiotv = przedmiot.SelectedIndex;
+            int ocenav = ocena.SelectedIndex+1;
             string datav = data.SelectedDate.Value.ToShortDateString();
             DBhelp.Dodajocene(usr.id, przedmiotv, ocenav, datav);
         }

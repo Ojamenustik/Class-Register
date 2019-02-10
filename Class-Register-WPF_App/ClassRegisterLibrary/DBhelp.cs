@@ -6,19 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassRegisterLibrary;
 
-using System.Data;
-using System.IO;
-
-
 namespace ClassRegister
 {
     public static class DBhelp
     {
+       public static string ConString = @"Data Source = C:\Users\well\Downloads\Class-Register-WPF_App\CRDB2.db";
 
-
-
-        static string ConString = $@"Data Source = {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\CRDB2.db")}";
-        
        /// <summary>
        /// Logowanie do bazy danych
        /// </summary>
@@ -64,7 +57,7 @@ namespace ClassRegister
        
             public static double OcenyUczniaSrednia(int uId)
         {
-            double ret = 0.0;
+            double ret = 0;
             using (SQLiteConnection con = new SQLiteConnection(ConString))
             {
 
@@ -76,9 +69,7 @@ namespace ClassRegister
                 SQLiteDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (reader.IsDBNull(0) == true)
-                        ret = 0.0;
-                    else
+
                     ret = reader.GetDouble(0);
 
                 }
@@ -137,34 +128,8 @@ namespace ClassRegister
             }
             return ret;
         }
-        public static List<obecnos> Obecnoscuczen(int id)
-        {
 
-            List<obecnos> ret = new List<obecnos>();
-            using (SQLiteConnection con = new SQLiteConnection(ConString))
-            {
-                int i = 0;
-                SQLiteCommand com = new SQLiteCommand(
-                    "select JestObecny, Dzien from Obecnosc  Where IdUcznia="+ id,
-                    con);
-                con.Open();
-
-                SQLiteDataReader reader = com.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    if (reader.GetInt32(0)==1)
-                    ret.Add(new obecnos() { Value = "Obecny", Text = reader.GetString(1) });
-                    else
-                        ret.Add(new obecnos() { Value = "nieobecny", Text = reader.GetString(1) });
-                }
-
-                reader.Close();
-            }
-            return ret;
-        }
-
-        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal,int uid)
+        public static List<OcenyPrzedmiot> OcenyPrzedmioty(List<int> tempVal)
         {
 
             List<OcenyPrzedmiot> ret = new List<OcenyPrzedmiot>();
@@ -172,8 +137,8 @@ namespace ClassRegister
                 using (SQLiteConnection con = new SQLiteConnection(ConString))
                 {
                     SQLiteCommand com = new SQLiteCommand(
-                        @"SELECT p.Przedmiot, ou.Ocena, ou.Dzien from OcenyUcznia ou join Przedmioty p 
-                          on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = "+uid.ToString()+" and p.IdPrzedmiotu="+temp.ToString(),con);
+                        $@"SELECT p.Przedmiot, ou.Ocena, ou.Dzien from OcenyUcznia ou join Przedmioty p 
+                          on p.IdPrzedmiotu = ou.IdPrzedmiotu where IdUcznia = 1 and p.IdPrzedmiotu={temp}",con);
 
                     con.Open();
                     
@@ -190,91 +155,6 @@ namespace ClassRegister
             }
             return ret;
         }
-        public static List<OcenyNauczyciel> OcenyPrzedmioty( int klasa)
-        {
-
-            List<OcenyNauczyciel> ret = new List<OcenyNauczyciel>();
-            
-                using (SQLiteConnection con = new SQLiteConnection(ConString))
-                {
-                    SQLiteCommand com = new SQLiteCommand(
-                        @"select p.Przedmiot, u.Imie,u.Nazwisko,o.Dzien, o.Ocena from OcenyUcznia o
-join Uzytkownik u on u.id=o.IdUcznia 
-join Przedmioty p on p.IdPrzedmiotu=o.IdPrzedmiotu
-where u.klasaId="+klasa.ToString(), con);
-
-                    con.Open();
-
-                    SQLiteDataReader reader = com.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-
-                    ret.Add(new OcenyNauczyciel() { Przedmiot = reader.GetString(0), Imie = reader.GetString(1), Nazwisko=reader.GetString(2), Dzien = reader.GetString(3), Ocena = reader.GetInt32(4),  });
-
-                    }
-                    reader.Close();
-                
-            }
-            return ret;
-        }
-        public static List<ObecnoscNauczyciel> ObecnosciKlasa(int klasa)
-        {
-
-            List<ObecnoscNauczyciel> ret = new List<ObecnoscNauczyciel>();
-
-            using (SQLiteConnection con = new SQLiteConnection(ConString))
-            {
-                SQLiteCommand com = new SQLiteCommand(
-                    @"select u.Imie,u.Nazwisko,o.Dzien, o.JestObecny from Obecnosc o
-join Uzytkownik u on u.id=o.IdUcznia 
-where u.klasaId=" + klasa.ToString(), con);
-
-                con.Open();
-
-                SQLiteDataReader reader = com.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    string czy;
-                    if (reader.GetInt32(3) == 1)
-                        czy = "tak";
-                    else
-                        czy = "nie";
-                    ret.Add(new ObecnoscNauczyciel() { Imie = reader.GetString(0), Nazwisko = reader.GetString(1), Dzien = reader.GetString(2), Obecnosc = czy });
-
-                }
-                reader.Close();
-
-            }
-            return ret;
-        }
-        public static List<pomoc> Klasy(int klasa)
-        {
-
-            List<pomoc> ret = new List<pomoc>();
-
-            using (SQLiteConnection con = new SQLiteConnection(ConString))
-            {
-                SQLiteCommand com = new SQLiteCommand(
-                    @"select * from Klasa", con);
-
-                con.Open();
-
-                SQLiteDataReader reader = com.ExecuteReader();
-
-                while (reader.Read())
-                {
-
-                    ret.Add(new pomoc() { Value = reader.GetInt32(0),Text= reader.GetString(1) });
-
-                }
-                reader.Close();
-
-            }
-            return ret;
-        }
-
 
         public static List<Uzytkownik> Uczniowie()
         {
@@ -310,7 +190,7 @@ where u.klasaId=" + klasa.ToString(), con);
             {
 
                 SQLiteCommand com = new SQLiteCommand(
-                    "insert into OcenyUcznia (IdUcznia,IdPrzedmiotu,Ocena,Dzien) values("+idu.ToString()+","+idp.ToString() + ","+oce.ToString() + ",'"+date.ToString() + "')",
+                    "insert into OcenyUcznia (IdUcznia,IdPrzedmiotu,Ocena,Dzien) values("+idu+","+idp+","+oce+",'"+date+"')",
                     con);
                 con.Open();
 

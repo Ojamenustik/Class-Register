@@ -22,8 +22,28 @@ namespace ClassRegisterLibrary
         public string Dzień{ get; set; }
     public int Ocena { get; set; }
     }
+    public class OcenyNauczyciel
+    {
 
-        public class pomoc
+        public string Przedmiot { get; set; }
+        public string Imie { get; set; }
+        public string Nazwisko { get; set; }
+        public string Dzien { get; set; }
+        
+        public int Ocena { get; set; }
+    }
+    public class ObecnoscNauczyciel
+    {
+
+       
+        public string Imie { get; set; }
+        public string Nazwisko { get; set; }
+        public string Dzien { get; set; }
+
+        public string Obecnosc { get; set; }
+    }
+
+    public class pomoc
         {
 
             public string Text { get; set; }
