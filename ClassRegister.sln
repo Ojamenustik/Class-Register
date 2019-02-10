@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRegister", "ClassRegis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassRegisterLibraryTests", "ClassRegisterLibraryTests\ClassRegisterLibraryTests.csproj", "{A5F31F21-2E1E-42FD-99C2-61A9724CEF6C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClassRegisterSetup", "ClassRegisterSetup\ClassRegisterSetup.vdproj", "{6BD87286-1047-40A3-9694-609C096C7A12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,8 @@ Global
 		{A5F31F21-2E1E-42FD-99C2-61A9724CEF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F31F21-2E1E-42FD-99C2-61A9724CEF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F31F21-2E1E-42FD-99C2-61A9724CEF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD87286-1047-40A3-9694-609C096C7A12}.Debug|Any CPU.ActiveCfg = Debug
+		{6BD87286-1047-40A3-9694-609C096C7A12}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
