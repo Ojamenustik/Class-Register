@@ -80,5 +80,7 @@ namespace ClassRegister.Tests
 
             Assert.IsTrue(test_reader == DBhelp.DodajObecnosc(3, 1, "2019-02-10") + DBhelp.DodajObecnosc(3, 1, "2019-02-09"));
         }
+
+        
     }
 }
