@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClassRegister.ViewModels;
 using ClassRegister.Views;
+using ClassRegisterLibrary;
 
 namespace ClassRegister
 {
@@ -21,9 +22,11 @@ namespace ClassRegister
     /// </summary>
     public partial class DashboardUczen : Window
     {
-        public DashboardUczen()
+        public static User User { get; set; }
+        public DashboardUczen(User user)
         {
             InitializeComponent();
+            User = user;
         }
 
         private void FaceBtn_Click(object sender, RoutedEventArgs e)
