@@ -83,8 +83,8 @@ assembly=System.Windows.Controls.DataVisualization.Toolkit"
                         <TextBlock Text="ŚREDNIA NA TLE KLASY" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                     </Grid>
                 </Button>
-               
-               
+
+
             </StackPanel>
         </Grid>
         <Grid  Grid.RowSpan="2" Grid.Column="1" Grid.Row="1">

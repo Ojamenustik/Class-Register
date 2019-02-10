@@ -48,6 +48,8 @@
                     <TextBlock Text="NAZWISKO:" FontSize="14" HorizontalAlignment="Center" Margin="10,10"/>
                     <TextBlock Name="nazwisko" Text="GAJDA" FontSize="14" HorizontalAlignment="Center" Margin="0,10"/>
                 </WrapPanel>
+                
+                
             </StackPanel>
         </Grid>
 

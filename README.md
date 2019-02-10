@@ -5,7 +5,7 @@ Po zalogowaniu uczeń może przejrzeć swoje oceny i obecności w zakładce Dash
 Po zalogowaniu jako nauczyciel użytkownik ten może wprowadzać oceny i obecności na dany dzień swoim klasom w zakładce Dziennik, przejrzeć oceny i obecności uczniów dla innych dni w zakładce Klasy, obejrzeć swoje dane w zakładce Profil oraz obejrzeć wykresy.<br>
 
 Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawanie i wyświetlanie danych. 
-![Optional Text](Screeny/3.png)
+![Optional Text](Screeny/4.jpg)
 <br>
 ## Użyte Technologie
 * VisualStudio 2017<br>
