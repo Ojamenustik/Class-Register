@@ -4,7 +4,7 @@ Aplikacja ma na zadanie możliwość logowanie się do systemu jako uczeń lub n
 Po zalogowaniu uczeń może przejrzeć swoje oceny i obecności w zakładce Dashboard, obejrzeć swoje dane w zakładce Profil i obejrzeć wykresy, które pomogą mu zobrazować sobie swoje oceny na tle klasy oraz swój postęp.<br>
 Po zalogowaniu jako nauczyciel użytkownik ten może wprowadzać oceny i obecności swoim klasom w zakładce Dziennik, przejrzeć oceny i obecności uczniów w zakładce Klasy, obejrzeć swoje dane w zakładce Profil oraz obejrzeć wykresy.<br>
 
-Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawanie i wyświetlanie danych. 
+Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawanie i wyświetlanie danych. <br>
 ![Optional Text](Screeny/2.png)
 <br>
 ## Użyte Technologie
@@ -28,11 +28,11 @@ Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawa
 ![Klasy](Screeny/5.PNG)
 
 <h3>Demo dostępy:</h3>
-Login demo ucznia: u2
-Hasło demo ucznia: u2
-<br>
-Login demo nauczyciela: user1
-Hasło demo nauczyciela: user1
+
+* Login demo ucznia: u2 <br>
+* Hasło demo ucznia: u2 <br>
+* Login demo nauczyciela: user1<br>
+* Hasło demo nauczyciela: user1<br>
 
 <h2>Twórcy</h2>
 
@@ -41,4 +41,5 @@ Hasło demo nauczyciela: user1
 * [Anna Bracha](https://github.com/silverdiamond45)<br>
 
 <h2>Pobierz aplikację!</h2>
-<b>![Login](ClassRegisterSetup/ClassRegisterSetup.msi)</b>
+
+![Instalator](ClassRegisterSetup/ClassRegisterSetup.msi)
