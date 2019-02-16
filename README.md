@@ -27,8 +27,18 @@ Nasza aplikacja została podpięta do bazy danych CRDB, która umożliwia dodawa
 ![Profil](Screeny/4.PNG)
 ![Klasy](Screeny/5.PNG)
 
+<h3>Demo dostępy:</h3>
+Login demo ucznia: u2
+Hasło demo ucznia: u2
+<br>
+Login demo nauczyciela: user1
+Hasło demo nauczyciela: user1
+
 <h2>Twórcy</h2>
 
 * [Anna Gajda](https://github.com/Ojamenustik)<br>
 * [Anna Gogól](https://github.com/anng96)<br>
 * [Anna Bracha](https://github.com/silverdiamond45)<br>
+
+<h2>Pobierz aplikację!</h2>
+<b>![Login](ClassRegisterSetup/ClassRegisterSetup.msi)</b>
